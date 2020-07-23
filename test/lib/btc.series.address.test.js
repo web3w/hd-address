@@ -1,12 +1,16 @@
 'use strict';
 
+let walletHD = require("../../lib/wallet.hd")
 let BtcAddr = require("../../lib/btc.series.address")
 let addrValid = require("../benchmark/address.valid")
 let hdData = require("./base/data").hd
 let hdIndx = hdData.index
+const mnemonic= hdData.mnemonic
+let hd = new walletHD(mnemonic)
+
 
 it("BTC getAddress", async () => {
-    let coin = new BtcAddr("BTC")
+    let coin = new BtcAddr(hd,"BTC")
     let {address} = await coin.getAddress(hdIndx)
     let validAddress = await addrValid("BTC", address)
     console.assert(validAddress, "address invalid")
@@ -15,7 +19,7 @@ it("BTC getAddress", async () => {
 
 
 it("BTC Testnet getAddress", async () => {
-    let coin = new BtcAddr("BTC", "TEST")
+    let coin = new BtcAddr(hd,"BTC", "TEST")
     let {address} = await coin.getAddress(hdIndx)
     let validAddress = await addrValid("BTC", address, "TEST")
     console.assert(validAddress, "address invalid")
