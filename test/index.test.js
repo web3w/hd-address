@@ -1,65 +1,55 @@
 'use strict';
 
 let Address = require("../index")
+let addrValid = require("./benchmark/address.valid")
+let hdData = require("./lib/base/data").hd
+let hdIndex = hdData.index
 
+let getKeyPairTest = async (coinSymbol) => {
+    let chain = new Address(coinSymbol)
+    let {address, pri, pub} = await chain.getKeyPair(hdIndex)
+    let validAddress = addrValid(chain.address.coin, address)
+    console.assert(validAddress, "address invalid")
+    console.assert(address == hdData[coinSymbol], "address is diff")
 
-let userId = 123456
+    let priAddr = await chain.address.getAddressByPrivateKey(pri)
+    console.assert(priAddr.address == hdData[coinSymbol], "address is diff")
 
-// 0x833F5230f7443761AfC8282829989E25f0Fc0A71
-it("ETH getAddress and ", async () => {
-    let chain = new Address("ETH")
-    let {address} = await chain.address.getAddress(userId)
+    let pubAddr = await chain.address.getAddressByPublicKey(pub)
+    console.assert(pubAddr.address == hdData[coinSymbol], "address is diff")
+}
 
-    let foo = await chain.address.isAddress(address)
-    console.log(foo)
+it("BTC getKeyPair", async () => {
+    let ok =await getKeyPairTest("BTC")
 })
+
 
 it("BTC TEST getKeyPair", async () => {
     let chain = new Address("BTC", "TEST")
-    let foo = await chain.getKeyPair(userId)
-    console.log(foo)
+    let {address} = await chain.getKeyPair(hdIndex)
+    let validAddress = addrValid(chain.address.coin, address, "TEST")
+    console.assert(validAddress, "address invalid")
+    console.assert(address == hdData.BTC_TEST, "address is diff")
 })
 
-it("BTC getAddressEx", async () => {
-    let chain = new Address("BTC", "TEST")
-    let foo = await chain.getAddressEx(userId)
-    console.log(foo)
+it("BCH getKeyPair", async () => {
+    let ok =await getKeyPairTest("BCH")
 })
 
 
-it("BTC getKeyPair", async () => {
-    let chain = new Address("BTC", "BTC")
-    let foo = await chain.getKeyPair(userId)
+it("LTC getKeyPair", async () => {
+    let ok =await getKeyPairTest("LTC")
+})
 
-    console.log(foo.address)
-    let priAddr = await chain.address.getAddressByPrivateKey(foo.pri)
-    console.log(priAddr.address)
-    let pubAddr = await chain.address.getAddressByPublicKey(foo.pub)
-    console.log(pubAddr.address)
+
+
+it("ETH getKeyPair ", async () => {
+    let ok =await getKeyPairTest("ETH")
 
 })
 
-it("ETH getKeyPair", async () => {
-    let chain = new Address("ETH")
-    let foo = await chain.getKeyPair(userId)
-    console.log(foo.address)
-    let priAddr = await chain.address.getAddressByPrivateKey(foo.pri)
-    console.log(priAddr.address)
-    let pubAddr = await chain.address.getAddressByPublicKey(foo.pub)
-    console.log(pubAddr.address)
-
-    console.assert(pubAddr.address == "0x833F5230f7443761AfC8282829989E25f0Fc0A71")
-})
 
 it("TRX getKeyPair", async () => {
-    let chain = new Address("TRX")
-    let foo = await chain.getKeyPair(userId)
-    console.log(foo.address)
-    let priAddr = await chain.address.getAddressByPrivateKey(foo.pri)
-    console.log(priAddr.address)
-    let pubAddr = await chain.address.getAddressByPublicKey(foo.pub)
-    console.log(pubAddr.address)
-    console.assert(pubAddr.address == "TDmpo4ZwgpJ5aMfuqiK4mKcbY131STyybh")
-    //
+    let ok =await getKeyPairTest("TRX")
 })
 

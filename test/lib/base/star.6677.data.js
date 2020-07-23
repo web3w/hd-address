@@ -2,11 +2,11 @@ module.exports = {
     "hd": {
         "mnemonic": "star star star star star star",
         "index": 6677,
-        "BTC": "1HthGRdzxunKAiMSazDdL8PZhE4qWpeBNK",
-        "BTC_TEST": "mxQeZUiymwDZwpq4JZC1A3btZDfYRhqRwS",
-        "BCH": "12owPGh3cXLk8HevCEx5fZAMPqZPBgvgmX",
-        "LTC": "LchXCPCtYTKUvksjf5RvkZhCwvYQrYewaa",
-        "ETH": "0x4E04823FDF08E862201a4cfA595dc1Ec72AdF3Ab",
-        "TRX": "TZFH9KReZpsWZZ9Q2bVyXGQtmvVL3PV8gE",
-    },
+        "BTC": "1442MZYQMh17ZoWdLMferxM4U9ppqGQbuK",
+        "BTC_TEST": "miZyecdPAiSNLuzF3ve2gsZPL9RXjA51JS",
+        "BCH": "12Ut7DckjmdzU4Kx8cZeCfsyqufcrTFkFq",
+        "LTC": "LbspHRvEu8PpyMq2EpR7rJNN5D3kzzsk9a",
+        "ETH": "0xe4fa4CEFEa4ebfB79f4527a71EEF983700119d58",
+        "TRX": "TQawSTYUsWvibpQURRUxJhUcLZdEbuFdGT",
+    }
 }
