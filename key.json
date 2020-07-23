@@ -1,0 +1,38 @@
+{
+  "name": "key",
+  "version": "1.0.0",
+  "description": "coins address hd ",
+  "mnemonic_desc": "wordlists  https://github.com/bitcoin/bips/blob/master/bip-0039/bip-0039-wordlists.md",
+  "mnemonic": "star star star star star star",
+  "coin_type_desc": "coin type code https://github.com/satoshilabs/slips/blob/master/slip-0044.md",
+  "coin_type": {
+    "BTC": {
+      "code": 0,
+      "mnemonic": ""
+    },
+    "TEST": {
+      "code": 1
+    },
+    "LTC": {
+      "code": 2
+    },
+    "ETH": {
+      "code": 60
+    },
+    "XRP": {
+      "code": 144
+    },
+    "BCH": {
+      "code": 145
+    },
+    "EOS": {
+      "code": 194
+    },
+    "TRX": {
+      "code": 195
+    },
+    "OMNI": {
+      "code": 200
+    }
+  }
+}
