@@ -1,39 +1,32 @@
-let WAValidator = require('wallet-address-validator');
-const TronWeb = require('tronweb');
-const Web3 = require('web3');
-
-const HttpProvider = TronWeb.providers.HttpProvider;
-const fullNode = new HttpProvider("h");
-const tronWeb = new TronWeb(fullNode, fullNode);
-const web3 = new Web3()
-
-
-// validate (address [, currency = 'bitcoin'[, networkType = 'prod']])
-// address - Wallet address to validate.
-// currency - Optional. Currency name or symbol, e.g. 'bitcoin' (default), 'litecoin' or 'LTC'
-// networkType - Optional. Use 'prod' (default) to enforce standard address, 'testnet' to enforce testnet address and 'both' to enforce nothing.
-let isBtcSeriesAddress = (coin, address, network = "prod") => {
-    network = network.toLowerCase() == "test" ? "testnet" : "prod"
-    return WAValidator.validate(address, coin, network);
-}
+let verify = require("hd-address-verify")
 
 module.exports = (coin, address, network) => {
     coin = coin && coin.toUpperCase()
     let isAddress = false
     switch (coin) {
         case "BTC":
-            isAddress = isBtcSeriesAddress(coin, address, network)
+            isAddress = verify.BTC(address)
+            break;
+        case "BTC_TEST":
+            isAddress = verify.BTC_TEST(address)
             break;
         case "BCH":
-            isAddress = isBtcSeriesAddress(coin, address, network)
+            isAddress = verify.BCH(address)
+            break;
+        case "BCH_TEST":
+            isAddress = verify.BCH_TEST(address)
+            break;
         case "LTC":
-            isAddress = isBtcSeriesAddress(coin, address, network)
+            isAddress = verify.LTC(address)
+            break;
+        case "LTC_TEST":
+            isAddress = verify.LTC_TEST(address)
             break;
         case "ETH":
-            isAddress = web3.utils.isAddress(address)
+            isAddress = verify.ETH(address)
             break;
         case "TRX":
-            isAddress = tronWeb.isAddress(address)
+            isAddress = verify.TRX(address)
             break;
     }
     return isAddress

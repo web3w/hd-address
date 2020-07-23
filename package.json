@@ -1,6 +1,6 @@
 {
   "name": "hd-address",
-  "version": "1.1.1",
+  "version": "2.0.1",
   "description": "hd address",
   "main": "index.js",
   "scripts": {
@@ -15,6 +15,7 @@
     "wif"
   ],
   "author": "txdev",
+  "git": "https://github.com/gisvr/hd-address",
   "license": "Apache-2.0 License",
   "dependencies": {
     "bip32": "^2.0.5",
@@ -27,10 +28,7 @@
     "ethereumjs-util": "^5.2.0"
   },
   "devDependencies": {
-    "tronweb": "^2.10.2",
-    "web3": "^1.2.11",
-    "bitcoinjs-lib": "^5.1.10",
-    "wallet-address-validator": "^0.1.7",
+    "hd-address-verify": "^1.0.2",
     "mocha": "^7.1.2"
   }
 }

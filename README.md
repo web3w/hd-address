@@ -1,7 +1,7 @@
 # hd-address
 deterministic address management
 
-author
+Author address
 ```js
 "BTC": "1HthGRdzxunKAiMSazDdL8PZhE4qWpeBNK", 
 "BCH": "12owPGh3cXLk8HevCEx5fZAMPqZPBgvgmX",
