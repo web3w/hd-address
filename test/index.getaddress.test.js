@@ -13,41 +13,43 @@ let hdAddress = require("../index")(mnemonic)
 let addrValid = require("./benchmark/address.valid")
 
 
-let getAddressTest = async (coinSymbol) => {
+let getAddressTest = async (coinSymbol, network) => {
     let chain = hdAddress[coinSymbol]
     let {address} = await chain.getAddress(hdIndex)
-    let validAddress = addrValid(chain.coin, address, chain.networkType)
-    console.assert(validAddress, "address invalid")
-    console.assert(address == hdData[coinSymbol], "address is diff")
-
+    let validAddress = addrValid(coinSymbol, address)
+    console.assert(validAddress, `address invalid : ${coinSymbol}  ${address}`)
+    console.assert(address == hdData[coinSymbol], `address is diff: ${coinSymbol}   ${address}`)
 }
 
-it("BTC getAddress", async () => {
-    let ok = await getAddressTest("BTC")
-})
+describe("getAddress", () => {
+    it("BTC getAddress", async () => {
+        let ok = await getAddressTest("BTC")
+    })
 
 
-it("BTC TEST getAddress", async () => {
-    let ok = await getAddressTest("BTC_TEST")
-})
+    it("BTC TEST getAddress", async () => {
+        let ok = await getAddressTest("BTC_TEST")
+    })
 
-it("BCH getAddressKeyPair", async () => {
-    let ok = await getAddressTest("BCH")
-})
-
-
-it("LTC getAddressKeyPair", async () => {
-    let ok = await getAddressTest("LTC")
-})
+    it("BCH getAddress", async () => {
+        let ok = await getAddressTest("BCH")
+    })
 
 
-it("ETH getAddressKeyPair ", async () => {
-    let ok = await getAddressTest("ETH")
+    it("LTC getAddress", async () => {
+        let ok = await getAddressTest("LTC")
+    })
 
-})
+
+    it("ETH getAddressKeyPair ", async () => {
+        let ok = await getAddressTest("ETH")
+
+    })
 
 
-it("TRX getAddressKeyPair", async () => {
-    let ok = await getAddressTest("TRX")
+    it("TRX getAddressKeyPair", async () => {
+        let ok = await getAddressTest("TRX")
+    })
+
 })
 

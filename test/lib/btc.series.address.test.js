@@ -1,65 +1,54 @@
 'use strict';
 
-let walletHD = require("../../lib/wallet.hd")
+let walletHD = require("../../lib/utils/wallet.hd")
 let BtcAddr = require("../../lib/btc.series.address")
-let verify = require("hd-address-verify")
+let addrValid = require("../benchmark/address.valid")
 let hdData = require("../data").hd
-let hdIndx = hdData.index
+let hdIndex = hdData.index
 const mnemonic = hdData.mnemonic
 let hd = new walletHD(mnemonic)
 
+let btcGetAddressTest = async (chain, coinSymbol) => {
 
-it("BTC getAddress", async () => {
-    let coin = new BtcAddr(hd, "BTC")
-    let {address} = await coin.getAddress(hdIndx)
-    let validAddress = verify.BTC(address)
-    console.assert(validAddress, "address invalid")
-    console.assert(address == hdData.BTC, "address is diff")
-})
+    let {address} = await chain.getAddress(hdIndex)
+    let validAddress = addrValid(coinSymbol, address)
+    console.assert(validAddress, `address invalid : ${coinSymbol}  ${address}`)
+    console.assert(address == hdData[coinSymbol], `address is diff: ${coinSymbol}   ${address}`)
+}
 
+describe("BTC series", () => {
 
-it("BTC Testnet getAddress", async () => {
-    let coin = new BtcAddr(hd, "BTC", "TEST")
-    let {address} = await coin.getAddress(hdIndx)
-    let validAddress = verify.BTC_TEST(address)
-    console.assert(validAddress, "address invalid")
-})
+    it("BTC getAddress", async () => {
+        let coin = new BtcAddr(hd, "BTC")
+        await btcGetAddressTest(coin, "BTC")
+    })
 
 
-it("BCH getAddress", async () => {
-    let coin = new BtcAddr(hd, "BCH")
-    let {address} = await coin.getAddress(hdIndx)
-    let validAddress = verify.BCH("BCH", address)
-    console.assert(validAddress, "address invalid")
-    console.assert(address == hdData.BCH, "address is diff")
-})
+    it("BTC Testnet getAddress", async () => {
+        let coin = new BtcAddr(hd, "BTC", "TEST")
+        await btcGetAddressTest(coin, "BTC_TEST")
+    })
 
-it("BCH TEST address", async () => {
-    let coin = new BtcAddr(hd, "BCH", "TEST")
-    let {address} = await coin.getAddress(userId)
-    console.log(address)
 
-    let foo = await verify.BCH_TEST(address)
-    console.log(foo)
-    // mwXkNj4duSiP4C6xu2kjGujHQXgpW3Szsj
-})
+    it("BCH getAddress", async () => {
+        let coin = new BtcAddr(hd, "BCH")
+        await btcGetAddressTest(coin, "BCH")
+    })
 
-it("LTC getAddress", async () => {
-    let coin = new BtcAddr(hd, "LTC")
-    let {address} = await coin.getAddress(hdIndx)
-    console.log(address)
-    let validAddress = verify.LTC(address)
-    console.assert(validAddress, "address invalid")
-    console.assert(address == hdData.LTC, "address is diff")
-})
+    it("BCH TEST address", async () => {
+        let coin = new BtcAddr(hd, "BCH", "TEST")
+        await btcGetAddressTest(coin, "BCH_TEST")
+    })
 
-it("LTC Test address", async () => {
-    let coin = new BtcAddr(hd, "LTC", "TEST")
-    let {address} = await coin.getAddress(hdIndx)
-    console.log(address)
+    it("LTC getAddress", async () => {
+        let coin = new BtcAddr(hd, "LTC")
+        await btcGetAddressTest(coin, "LTC")
+    })
 
-    let foo =  verify.LTC_TEST(address)
-    console.log(foo)
+    it("LTC Test address", async () => {
+        let coin = new BtcAddr(hd, "LTC", "TEST")
+        await btcGetAddressTest(coin, "LTC_TEST")
+    })
 })
 
 

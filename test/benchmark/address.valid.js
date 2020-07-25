@@ -1,6 +1,6 @@
 let verify = require("hd-address-verify")
 
-module.exports = (coin, address, network) => {
+module.exports = (coin, address) => {
     coin = coin && coin.toUpperCase()
     let isAddress = false
     switch (coin) {
