@@ -1,10 +1,10 @@
-let hdData = require("./data").hd
-let hdIndex = hdData.index
-const mnemonic = hdData.mnemonic
+
+let hdIndex = 6677
+const myselfMnemonic = "start start"
 const hdAddress = require("../index")
 
 let example = async () => {
-    let hd = hdAddress(mnemonic)
+    let hd = hdAddress(myselfMnemonic)
     let addr = await hd.BTC.getAddress(hdIndex)
     console.log("BTC",addr.address)
     addr = await hd.BTC_TEST.getAddress(hdIndex)

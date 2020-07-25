@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "mnemonic": "star star star star star star",
+  "default_mnemonic": "star star star star star star",
   "coin_type": {
     "BTC": {
       "code": 0

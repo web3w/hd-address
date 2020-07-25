@@ -7,23 +7,16 @@ HD wallet address generation utility.
 npm i hd-address
 ```
 ## Usage
-
-### config
+### Reference 
 [Mnemonic wordlists reference (bip39)](https://github.com/bitcoin/bips/blob/master/bip-0039/bip-0039-wordlists.md)   
 [Hd coin type list (bip44)]( https://github.com/satoshilabs/slips/blob/master/slip-0044.md)
-
-config: [./conf/key.json](conf/hd.json)
-```javascript
-{  
-  "mnemonic": "star star star star star star"
-}
-```
+ 
 
 ### Client Initialization
 
 ```javascript
 const mnemonic = "star star star star star star"
-const hdAddress = require("../index")(mnemonic)
+const hd = require("../index")(mnemonic)
 ```
 
 ### Basic Usage
@@ -36,11 +29,26 @@ const hdAddress = require("../index")(mnemonic)
  console.log("BTC",btcAddr.address)
 
  let ethAddr = await hd.ETH.getAddress(hdIndex)
- console.log("BTC",ethAddr.address)
+ console.log("ETH",ethAddr.address)
 
  let trxAddr = await hd.TRX.getAddress(hdIndex)
  console.log("TRX",trxAddr.address)
 ```
+
+** Get keypair **   [get keypair example](./test/index.getkeypair.test.js)
+```js
+ let {address, pri, pub} = await hd.BTC.getAddressKeyPair(hdIndex)
+```
+
+** Get address using private key or public key **
+```js
+  let priAddr = await hd.BTC.getAddressByPrivateKey(pri)
+  console.assert(priAddr.address == address)
+
+  let pubAddr = await hd.BTC.getAddressByPublicKey(pub)
+  console.assert(pubAddr.address == address)
+```
+
 # Testing
 
 ```shell
