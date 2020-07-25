@@ -1,6 +1,6 @@
 # hd-address
 [![NPM version](https://img.shields.io/npm/v/hd-address?style=flat-square)](https://www.npmjs.com/package/hd-address)
-An HD wallet address generation tool.
+HD wallet address generation utility.
 
 ## Install
 ```
@@ -41,7 +41,15 @@ const hdAddress = require("../index")(mnemonic)
  let trxAddr = await hd.TRX.getAddress(hdIndex)
  console.log("TRX",trxAddr.address)
 ```
+# Testing
 
+```shell
+mocha 
+```
+
+# License
+
+[Apache-2.0 License](./LICENSE)
 
 ### Donor Address
 ```js

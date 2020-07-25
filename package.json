@@ -1,7 +1,7 @@
 {
   "name": "hd-address",
-  "version": "2.1.1",
-  "description": "hd address",
+  "version": "2.1.2",
+  "description": "HD wallet address generation utility",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
@@ -12,12 +12,13 @@
     "BTC",
     "ETH",
     "TRX",
-    "bip39",
+    "bip32",
     "bip39",
     "bip44"
   ],
   "author": "txdev",
-  "git": "https://github.com/gisvr/hd-address",
+  "repository": "git@github.com:gisvr/hd-address",
+  "homepage": "https://github.com/gisvr/hd-address",
   "license": "Apache-2.0 License",
   "dependencies": {
     "bip32": "^2.0.5",
