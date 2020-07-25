@@ -1,8 +1,6 @@
-let logInfo = async (chain, hdIndex) => {
-    let coin = chain.coin
-    console.log(coin)
-    let addr = await chain.getAddress(hdIndex)
-    console.log(`${coin}:"${addr.address}"`)
+let logInfo = async (hdCoin, hdIndex) => {
+    let addr = await hdCoin.getAddress(hdIndex)
+    console.log(`${hdCoin.coin}:"${addr.address}"`)
 }
 
 (async () => {
@@ -11,11 +9,13 @@ let logInfo = async (chain, hdIndex) => {
     const mnemonic = hdData.mnemonic
     let hdAddress = require("../index")
 
-    let foo = hdAddress(mnemonic)
-    await logInfo(foo.BTC, hdIndex)
-    await logInfo(foo.BTC_TEST, hdIndex)
-    await logInfo(foo.BCH, hdIndex)
-    await logInfo(foo.LTC, hdIndex)
-    await logInfo(foo.ETH, hdIndex)
-    await logInfo(foo.TRX, hdIndex)
+    let hd = hdAddress(mnemonic)
+    await logInfo(hd.BTC, hdIndex)
+    await logInfo(hd.BTC_TEST, hdIndex)
+    await logInfo(hd.BCH, hdIndex)
+    await logInfo(hd.BCH_TEST, hdIndex)
+    await logInfo(hd.LTC, hdIndex)
+    await logInfo(hd.LTC_TEST, hdIndex)
+    await logInfo(hd.ETH, hdIndex)
+    await logInfo(hd.TRX, hdIndex)
 })()

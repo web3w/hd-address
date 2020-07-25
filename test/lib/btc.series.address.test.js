@@ -17,7 +17,6 @@ let btcGetAddressTest = async (chain, coinSymbol) => {
 }
 
 describe("BTC series", () => {
-
     it("BTC getAddress", async () => {
         let coin = new BtcAddr(hd, "BTC")
         await btcGetAddressTest(coin, "BTC")
