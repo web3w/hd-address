@@ -35,12 +35,12 @@ const hd = require("../index")(mnemonic)
  console.log("TRX",trxAddr.address)
 ```
 
-** Get keypair **   [get keypair example](./test/index.getkeypair.test.js)
+**Get keypair**   [get keypair example](./test/index.getkeypair.test.js)
 ```js
  let {address, pri, pub} = await hd.BTC.getAddressKeyPair(hdIndex)
 ```
 
-** Get address using private key or public key **
+**Get address using private key or public key**
 ```js
   let priAddr = await hd.BTC.getAddressByPrivateKey(pri)
   console.assert(priAddr.address == address)
