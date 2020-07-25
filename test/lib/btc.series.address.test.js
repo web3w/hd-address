@@ -3,7 +3,7 @@
 let walletHD = require("../../lib/wallet.hd")
 let BtcAddr = require("../../lib/btc.series.address")
 let verify = require("hd-address-verify")
-let hdData = require("./base/data").hd
+let hdData = require("../data").hd
 let hdIndx = hdData.index
 const mnemonic = hdData.mnemonic
 let hd = new walletHD(mnemonic)

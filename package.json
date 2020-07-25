@@ -9,10 +9,12 @@
   "keywords": [
     "HD",
     "wallet",
+    "BTC",
+    "ETH",
+    "TRX",
     "bip39",
     "bip39",
-    "bip44",
-    "wif"
+    "bip44"
   ],
   "author": "txdev",
   "git": "https://github.com/gisvr/hd-address",

@@ -6,7 +6,7 @@ let logInfo = async (chain, hdIndex) => {
 }
 
 (async () => {
-    let hdData = require("./lib/base/data").hd
+    let hdData = require("./data").hd
     let hdIndex = hdData.index
     const mnemonic = hdData.mnemonic
     let hdAddress = require("../index")

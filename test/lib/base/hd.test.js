@@ -3,10 +3,10 @@
 let EthAddr = require("../../lib/base/eth.address")
 let TrxAddr = require("../../../lib/trx.address")
 
+let hdData = require("../../data").hd
 
-let userId = 123456
+let userId = hdData.index
 
-// 0x833F5230f7443761AfC8282829989E25f0Fc0A71
 it("Eth address", async () => {
     let coin = new EthAddr()
     let {address} = await coin.getAddress(userId)

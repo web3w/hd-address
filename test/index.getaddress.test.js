@@ -1,7 +1,7 @@
 'use strict';
 
 // data
-let hdData = require("./lib/base/data").hd
+let hdData = require("./data").hd
 let hdIndex = hdData.index
 const mnemonic = hdData.mnemonic
 

@@ -6,20 +6,6 @@ let Address = {
     TRX: require("./lib/trx.address")
 }
 
-// class ChainAddress {
-//     constructor(mnemonic,coin, networkType) {
-//         let hd = new walletHD(mnemonic)
-//         networkType = networkType || coin
-//         this.address = new Address[coin](hd, coin, networkType)
-//     }
-//
-//     async getAddressKeyPair(index) {
-//         let {pri, pub} = await this.address.getAddressKeyPair(index);
-//         let {address} = await this.address.getAddress(index)
-//         return {pri: pri.toString("hex"), pub: pub.toString("hex"), address};
-//     };
-// }
-
 module.exports = (mnemonic) => {
     let hd = new walletHD(mnemonic)
     return {

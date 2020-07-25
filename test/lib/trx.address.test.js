@@ -3,7 +3,7 @@
 let walletHD = require("../../lib/wallet.hd")
 let TrxAddr = require("../../lib/trx.address")
 let addrValid = require("../benchmark/address.valid")
-let hdData = require("./base/data").hd
+let hdData = require("../data").hd
 const mnemonic= hdData.mnemonic
 let hd = new walletHD(mnemonic)
 
