@@ -33,5 +33,8 @@
   "devDependencies": {
     "hd-address-verify": "^1.0.2",
     "mocha": "^7.1.2"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   }
 }

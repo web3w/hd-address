@@ -1,5 +1,6 @@
 # hd-address
 [![NPM version](https://img.shields.io/npm/v/hd-address?style=flat-square)](https://www.npmjs.com/package/hd-address)
+
 HD wallet address generation utility.
 
 ## Install
