@@ -24,7 +24,7 @@ module.exports = {
         } else if (keyType == "seed") {
             hd = new SeedHD(key)
         } else {
-            throw "key tpye unsupported"
+            throw "key type unsupported"
         }
         return {
             hdWallet: hd,

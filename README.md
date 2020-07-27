@@ -13,7 +13,7 @@ npm i hd-address
 
 [Mnemonic wordlists reference (bip39)](https://github.com/bitcoin/bips/blob/master/bip-0039/bip-0039-wordlists.md) 
 
-[Hd coin type list (bip44)]( https://github.com/satoshilabs/slips/blob/master/slip-0044.md)  
+[HD Wallet coin type list (bip44)]( https://github.com/satoshilabs/slips/blob/master/slip-0044.md)  
 m / purpose' / coin_type' / account' / change / address_index
 ```js
                                                         / address 0
