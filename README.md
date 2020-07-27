@@ -27,6 +27,7 @@ root -- BIP44
  
 
 ### Mnemonic Initialization
+ [example](./example/mnemonic.js) 
 ```javascript
 const mnemonic = "star star star star star star"
 //const hd = require("hd-address")(mnemonic) //v2.0
@@ -36,6 +37,7 @@ let hd = require("hd-address").HD(mnemonic) //v3.0
 
 
 ### Seed Initialization 
+ [example](./example/seed.js) 
 
 ```javascript 
 
@@ -51,7 +53,7 @@ let hd = require("hd-address").HD(seedBuf,hd.keyType.seed) //v3.0
 
 
 **Get BTC ETH TRX address :**
- [example](./example/index.js) 
+ [example](./example/mnemonic.js) 
 ```javascript
  let hdIndex=6677
  let btcAddr = await hd.BTC.getAddress(hdIndex)
@@ -79,7 +81,7 @@ let hd = require("hd-address").HD(seedBuf,hd.keyType.seed) //v3.0
 ```
 
 ### Advanced Usage
-**extension**  [example](./example/extension/index.js) 
+**extension**  [example](./example/extension/index.js) //v3.0
 ```js 
 const AddressClass =  require("hd-address").AddressClass
 
