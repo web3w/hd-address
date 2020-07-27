@@ -3,11 +3,11 @@
 
 HD wallet address generation utility.
 
-## Install
+### Getting started
+### Install
 ```
 npm i hd-address
 ```
-## Usage
 ### Reference 
 [HD Wallet (bip32)](https://github.com/bitcoin/bips/blob/master/bip-0032/derivation.png)
 
@@ -25,34 +25,30 @@ root -- BIP44
                           
 ```
  
-
+## Initialization
 ### Mnemonic Initialization
  [example](./example/mnemonic.js) 
 ```javascript
 const mnemonic = "star star star star star star"
 //const hd = require("hd-address")(mnemonic) //v2.0
 let hd = require("hd-address").HD(mnemonic) //v3.0
-
 ```
-
 
 ### Seed Initialization 
  [example](./example/seed.js) 
 
-```javascript 
-const hdAddress = require("hd-address")
+```javascript
 const seed ="03d0be996b63e90c7625dd3f5319c3bc11669d3d35ae5dc345595e5e59be74084f"
+const hdAddress = require("hd-address")
 // Seed should be at least 128 bits and most 512 bits
-let seedBuf = Buffer.from(myselfSeed, "hex")
+let seedBuf = Buffer.from(seed, "hex")
 let hd = hdAddress.HD(seedBuf,hdAddress.keyType.seed) //v3.0
-
 ```
 
 
-### Basic Usage
+## Basic Usage
 
-
-**Get BTC ETH TRX address :**
+### **Get BTC ETH TRX address :**
  [example](./example/mnemonic.js) 
 ```javascript
  let hdIndex=6677
@@ -66,12 +62,12 @@ let hd = hdAddress.HD(seedBuf,hdAddress.keyType.seed) //v3.0
  console.log("TRX",trxAddr.address)
 ```
 
-**Get keypair**   [get keypair example](./test/index.getkeypair.test.js)
+### **Get keypair**   [get keypair example](./test/index.getkeypair.test.js)
 ```js
  let {address, pri, pub} = await hd.BTC.getAddressKeyPair(hdIndex)
 ```
 
-**Get address using private key or public key**
+### **Get address using private key or public key**
 ```js
   let priAddr = await hd.BTC.getAddressByPrivateKey(pri)
   console.assert(priAddr.address == address)
@@ -80,8 +76,8 @@ let hd = hdAddress.HD(seedBuf,hdAddress.keyType.seed) //v3.0
   console.assert(pubAddr.address == address)
 ```
 
-### Advanced Usage
-**extension**  [example](./example/extension/index.js) 
+## Advanced Usage
+### **extension**  [example](./example/extension/index.js) 
 ```js 
 const AddressClass =  require("hd-address").AddressClass //v3.0
 
