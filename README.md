@@ -40,11 +40,11 @@ let hd = require("hd-address").HD(mnemonic) //v3.0
  [example](./example/seed.js) 
 
 ```javascript 
-
+const hdAddress = require("hd-address")
 const seed ="03d0be996b63e90c7625dd3f5319c3bc11669d3d35ae5dc345595e5e59be74084f"
 // Seed should be at least 128 bits and most 512 bits
 let seedBuf = Buffer.from(myselfSeed, "hex")
-let hd = require("hd-address").HD(seedBuf,hd.keyType.seed) //v3.0
+let hd = hdAddress.HD(seedBuf,hdAddress.keyType.seed) //v3.0
 
 ```
 
@@ -81,9 +81,9 @@ let hd = require("hd-address").HD(seedBuf,hd.keyType.seed) //v3.0
 ```
 
 ### Advanced Usage
-**extension**  [example](./example/extension/index.js) //v3.0
+**extension**  [example](./example/extension/index.js) 
 ```js 
-const AddressClass =  require("hd-address").AddressClass
+const AddressClass =  require("hd-address").AddressClass //v3.0
 
 module.exports = class EosAddress extends AddressClass {
     constructor(hd) {
