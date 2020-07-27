@@ -6,7 +6,7 @@ let hdIndex = hdData.index
 const mnemonic = hdData.mnemonic
 
 //  import
-let hdAddress = require("../index")(mnemonic)
+let hdAddress = require("../index").HD(mnemonic)
 
 
 // valid

@@ -4,7 +4,7 @@ let hdData = require("./data").hd
 let hdIndex = hdData.index
 const mnemonic = hdData.mnemonic
 
-let hdAddress = require("../index")(mnemonic)
+let hdAddress = require("../index").HD(mnemonic)
 
 
 let addrValid = require("./benchmark/address.valid")

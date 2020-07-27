@@ -1,6 +1,6 @@
 {
   "name": "hd-address",
-  "version": "2.1.2",
+  "version": "3.0.0",
   "description": "HD wallet address generation utility",
   "main": "index.js",
   "scripts": {
@@ -33,8 +33,5 @@
   "devDependencies": {
     "hd-address-verify": "^1.0.2",
     "mocha": "^7.1.2"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
   }
 }

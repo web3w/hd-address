@@ -1,6 +1,6 @@
 'use strict';
 
-let walletHD = require("../../lib/utils/wallet.hd")
+let walletHD = require("../../lib/utils/mnemonic.hd")
 let TrxAddr = require("../../lib/trx.address")
 let addrValid = require("../benchmark/address.valid")
 let hdData = require("../data").hd

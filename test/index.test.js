@@ -9,7 +9,7 @@ let logInfo = async (hdCoin, hdIndex) => {
     const mnemonic = hdData.mnemonic
     let hdAddress = require("../index")
 
-    let hd = hdAddress(mnemonic)
+    let hd = hdAddress.HD(mnemonic)
     await logInfo(hd.BTC, hdIndex)
     await logInfo(hd.BTC_TEST, hdIndex)
     await logInfo(hd.BCH, hdIndex)
