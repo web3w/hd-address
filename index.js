@@ -19,10 +19,10 @@ module.exports = {
         "base58": "base58",
     },
     AddressClass: AddressClass,
-    HD: (key, keyType = "mnemonic") => {
+    HD: (key, keyType = "mnemonic", pwd) => {
         let hd
         if (keyType == "mnemonic") {
-            hd = new MnemonicHD(key)
+            hd = new MnemonicHD(key, pwd)
         } else if (keyType == "seed") {
             hd = new SeedHD(key)
         } else if (keyType == "base58") {

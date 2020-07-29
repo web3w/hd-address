@@ -29,9 +29,12 @@ root -- BIP44
 ### Mnemonic Initialization
  [example](./example/mnemonic.js) 
 ```javascript
+const hdAddress = require("hd-address")  
 const mnemonic = "star star star star star star"
-//const hd = require("hd-address")(mnemonic) //v2.0
-let hd = require("hd-address").HD(mnemonic) //v3.0
+const pwd = "star"
+//let hd = hdAddress(mnemonic) //v2.0
+//let hd = hdAddress.HD(mnemonic) //v3.0
+let hd = hdAddress.HD(mnemonic,hdAddress.keyType.mnemonic,pwd) //v3.1
 ```
 
 ### Seed Initialization 
@@ -45,31 +48,40 @@ let seedBuf = Buffer.from(seed, "hex")
 let hd = hdAddress.HD(seedBuf,hdAddress.keyType.seed) //v3.0
 ```
 
+### Base58 Initialization 
+ [example](./example/base58.js) 
+
+```javascript
+const hdAddress = require("hd-address")  
+const myselfBase58 = "xprv9s21ZrQH143K3QTDL4LXw2F7HEK3wJUD2nW2nRk4stbPy6cq3jPPqjiChkVvvNKmPGJxWUtg6LnF5kejMRNNU3TGtRBeJgk33yuGBxrMPHi"
+let hd = hdAddress.HD(myselfBase58,hdAddress.keyType.base58) //v3.1.0
+```
+
 ## Basic Usage
 
 ### **Get BTC ETH TRX address :** [example](./example/mnemonic.js) 
 ```javascript
  let hdIndex=6677
- let btcAddr = await hd.BTC.getAddress(hdIndex)
+ let btcAddr =  hd.BTC.getAddress(hdIndex)
  console.log("BTC",btcAddr.address)
 
- let ethAddr = await hd.ETH.getAddress(hdIndex)
+ let ethAddr =  hd.ETH.getAddress(hdIndex)
  console.log("ETH",ethAddr.address)
 
- let trxAddr = await hd.TRX.getAddress(hdIndex)
+ let trxAddr =  hd.TRX.getAddress(hdIndex)
  console.log("TRX",trxAddr.address)
 ```
 
 ### **Get keypair:** [example](./test/index.getkeypair.test.js)
 ```js
- let {address, pri, pub} = await hd.BTC.getAddressKeyPair(hdIndex)
+ let {address, pri, pub} =  hd.BTC.getAddressKeyPair(hdIndex)
 ```
 ### **Get address using private key or public key**
 ```js
-  let priAddr = await hd.BTC.getAddressByPrivateKey(pri)
+  let priAddr =  hd.BTC.getAddressByPrivateKey(pri)
   console.assert(priAddr.address == address)
 
-  let pubAddr = await hd.BTC.getAddressByPublicKey(pub)
+  let pubAddr =  hd.BTC.getAddressByPublicKey(pub)
   console.assert(pubAddr.address == address)
 ```
 
@@ -86,16 +98,16 @@ module.exports = class EosAddress extends AddressClass {
         super(hd, coin);
     }
 
-    async getAddress(index) {
-        console.log(this.coin, " implement  getAddress method")
+    getAddress(index) {
+        console.log(this.coin, "implement  getAddress method")
     }
 
-    async getAddressByPrivateKey(privateKey) {
-        console.log(this.coin, "  implement  getAddressByPrivateKey method")
+    getAddressByPrivateKey(privateKey) {
+        console.log(this.coin, "implement  getAddressByPrivateKey method")
     }
 
-    async getAddressByPublicKey(privateKey) {
-        console.log(this.coin, "  implement  getAddressByPublicKey method")
+    getAddressByPublicKey(privateKey) {
+        console.log(this.coin, "implement  getAddressByPublicKey method")
     }
 }
 ```
