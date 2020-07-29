@@ -6,23 +6,23 @@ const hdAddress = require("../index")
 let hdIndex = 6677
 const myselfMnemonic = "star star"
 
-let example = async () => {
+let example =  () => {
     let hd = hdAddress.HD(myselfMnemonic)
-    let addr = await hd.BTC.getAddress(hdIndex)
+    let addr =  hd.BTC.getAddress(hdIndex)
     console.log("BTC",addr.address)
-    addr = await hd.BTC_TEST.getAddress(hdIndex)
+    addr =  hd.BTC_TEST.getAddress(hdIndex)
     console.log("BTC_TEST",addr.address)
-    addr = await hd.BCH.getAddress(hdIndex)
+    addr =  hd.BCH.getAddress(hdIndex)
     console.log("BCH",addr.address)
-    addr = await hd.BCH_TEST.getAddress(hdIndex)
+    addr =  hd.BCH_TEST.getAddress(hdIndex)
     console.log("BCH_TEST",addr.address)
-    addr = await hd.LTC.getAddress(hdIndex)
+    addr =  hd.LTC.getAddress(hdIndex)
     console.log("LTC",addr.address)
-    addr = await hd.LTC_TEST.getAddress(hdIndex)
+    addr =  hd.LTC_TEST.getAddress(hdIndex)
     console.log("LTC_TEST",addr.address)
-    addr = await hd.ETH.getAddress(hdIndex)
+    addr =  hd.ETH.getAddress(hdIndex)
     console.log("ETH",addr.address)
-    addr = await hd.TRX.getAddress(hdIndex)
+    addr =  hd.TRX.getAddress(hdIndex)
     console.log("TRX",addr.address)
 }
 

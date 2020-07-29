@@ -8,15 +8,15 @@ module.exports = class EosAddress extends AddressClass {
         super(hd, coin);
     }
 
-    async getAddress(index) {
+    getAddress(index) {
         console.log(this.coin, " implement  getAddress method")
     }
 
-    async getAddressByPrivateKey(privateKey) {
+    getAddressByPrivateKey(privateKey) {
         console.log(this.coin, "  implement  getAddressByPrivateKey method")
     }
 
-    async getAddressByPublicKey(privateKey) {
+    getAddressByPublicKey(privateKey) {
         console.log(this.coin, "  implement  getAddressByPublicKey method")
     }
 }
