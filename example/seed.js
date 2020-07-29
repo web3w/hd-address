@@ -1,9 +1,9 @@
 'use strict';
-
-let hdIndex = 6677
-// const myselfSeed = "8ff665b9eb37082688f3933e985466570de7d37d92720b065728eefa75ae8cb47a00fb41b821c203442ce26b357f58bdb995a30cf418da2c7bc836186f6ea5cb"
-const myselfSeed = "03d0be996b63e90c7625dd3f5319c3bc11669d3d35ae5dc345595e5e59be74084f"
+// const hdAddress = require("hd-address")
 const hdAddress = require("../index")
+let hdIndex = 6677
+const myselfSeed = "03d0be996b63e90c7625dd3f5319c3bc11669d3d35ae5dc345595e5e59be74084f"
+
 // 16(128bits)< seed.length<64(512bits)
 
 let example = async () => {

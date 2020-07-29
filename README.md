@@ -45,11 +45,9 @@ let seedBuf = Buffer.from(seed, "hex")
 let hd = hdAddress.HD(seedBuf,hdAddress.keyType.seed) //v3.0
 ```
 
-
 ## Basic Usage
 
-### **Get BTC ETH TRX address :**
- [example](./example/mnemonic.js) 
+### **Get BTC ETH TRX address :** [example](./example/mnemonic.js) 
 ```javascript
  let hdIndex=6677
  let btcAddr = await hd.BTC.getAddress(hdIndex)
@@ -62,11 +60,10 @@ let hd = hdAddress.HD(seedBuf,hdAddress.keyType.seed) //v3.0
  console.log("TRX",trxAddr.address)
 ```
 
-### **Get keypair**   [get keypair example](./test/index.getkeypair.test.js)
+### **Get keypair:** [example](./test/index.getkeypair.test.js)
 ```js
  let {address, pri, pub} = await hd.BTC.getAddressKeyPair(hdIndex)
 ```
-
 ### **Get address using private key or public key**
 ```js
   let priAddr = await hd.BTC.getAddressByPrivateKey(pri)
@@ -77,8 +74,10 @@ let hd = hdAddress.HD(seedBuf,hdAddress.keyType.seed) //v3.0
 ```
 
 ## Advanced Usage
-### **extension**  [example](./example/extension/index.js) 
-```js 
+### **extension: ** [example](./example/extension/index.js)
+
+```javascript
+
 const AddressClass =  require("hd-address").AddressClass //v3.0
 
 module.exports = class EosAddress extends AddressClass {
@@ -103,15 +102,15 @@ module.exports = class EosAddress extends AddressClass {
 
 # Testing
 
-```shell
-mocha 
+```js
+  mocha 
 ```
 
 # License
 
 [Apache-2.0 License](./LICENSE)
 
-### Donor Address
+## Donor Address
 ```js
 "BTC": "1HthGRdzxunKAiMSazDdL8PZhE4qWpeBNK", 
 "BCH": "12owPGh3cXLk8HevCEx5fZAMPqZPBgvgmX",
