@@ -23,26 +23,26 @@ let getAddressTest = async (coinSymbol, network) => {
 
 describe("getAddress", () => {
     it("BTC getAddress", async () => {
-        let ok = await getAddressTest("BTC")
+        let ok =  getAddressTest("BTC")
     })
 
 
     it("BTC TEST getAddress", async () => {
-        let ok = await getAddressTest("BTC_TEST")
+        let ok =  getAddressTest("BTC_TEST")
     })
 
     it("BCH getAddress", async () => {
-        let ok = await getAddressTest("BCH")
+        let ok =  getAddressTest("BCH")
     })
 
 
     it("LTC getAddress", async () => {
-        let ok = await getAddressTest("LTC")
+        let ok =  getAddressTest("LTC")
     })
 
 
     it("ETH getAddressKeyPair ", async () => {
-        let ok = await getAddressTest("ETH")
+        let ok =  getAddressTest("ETH")
 
     })
 

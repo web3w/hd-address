@@ -7,3 +7,5 @@ let key = 'xprv9s21ZrQH143K3QTDL4LXw2F7HEK3wJUD2nW2nRk4stbPy6cq3jPPqjiChkVvvNKmP
 let node =new HDWallet(key)
 
 let child = node.getPathChainCode('m/0/0')
+
+console.log(child.pub.toString("hex"))
