@@ -5,9 +5,9 @@ const hdAddress = require("../index")
 
 let hdIndex = 6677
 const myselfMnemonic = "star star"
+let hd = hdAddress.HD(myselfMnemonic)
 
 let example =  () => {
-    let hd = hdAddress.HD(myselfMnemonic)
     let addr =  hd.BTC.getAddress(hdIndex)
     console.log("BTC",addr.address)
     addr =  hd.BTC_TEST.getAddress(hdIndex)
@@ -26,6 +26,25 @@ let example =  () => {
     console.log("TRX",addr.address)
 }
 
-example()
+let getRandomMnemonic = ()=>{
+    let mnemo = hd.hdWallet.getRandomMnemonic()
+    console.log(mnemo)
+    let isMnemo = hd.hdWallet.validateMnemonic(mnemo)
+    console.log(isMnemo)
+}
 
+let getChineseMnemonic = ()=>{
+    let wordList = hd.hdWallet.wordlists.zh
+    let strength = hd.hdWallet.strength.low
+    let mnemo = hd.hdWallet.getRandomMnemonic(strength, wordList)
+    console.log(mnemo)
+    let isMnemo = hd.hdWallet.validateMnemonic(mnemo, wordList)
+    console.log(isMnemo)
+}
+
+example()
+console.log("----------getRandomMnemonic----------")
+getRandomMnemonic()
+console.log("----------getChineseMnemonic----------")
+getChineseMnemonic()
 
