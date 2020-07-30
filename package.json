@@ -14,7 +14,10 @@
     "TRX",
     "bip32",
     "bip39",
-    "bip44"
+    "bip44",
+    "mnemonic",
+    "chainCode",
+    "blockchain"
   ],
   "author": "txdev",
   "repository": "git@github.com:gisvr/hd-address",

@@ -31,8 +31,7 @@ root -- BIP44
 ```javascript
 const hdAddress = require("hd-address")  
 const mnemonic = "star star star star star star"
-const pwd = "star"
-//let hd = hdAddress(mnemonic) //v2.0
+const pwd = "star" 
 //let hd = hdAddress.HD(mnemonic) //v3.0
 let hd = hdAddress.HD(mnemonic,hdAddress.keyType.mnemonic,pwd) //v3.1
 ```
@@ -93,7 +92,7 @@ let hd = hdAddress.HD(myselfBase58,hdAddress.keyType.base58) //v3.1.0
 ```
 
 ## Advanced Usage
-### **Extension: ** [example](./example/extension/index.js)
+### **Extension:** [example](./example/extension/index.js)
 
 ```javascript
 
@@ -118,7 +117,7 @@ module.exports = class EosAddress extends AddressClass {
     }
 }
 ```
-### **Chain Code: ** [example](./example/chaincode.js)
+### **Chain Code:** [example](./example/chaincode.js)
 ```js
     let hdPath = "m/44'/0'/1'"
     let {pub, chainCode} = hd.hdWallet.getPathChainCode(hdPath)
