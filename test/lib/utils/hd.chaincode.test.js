@@ -10,6 +10,8 @@ it("HD getPublicKeyByChainCode", async () => {
     let hd = new HDWallet()
     let hdPath = "m/44'/0'/1'"
     let {pub,chainCode} =  hd.getPathChainCode(hdPath)
+    let pubAddr =  hd.BTC.getAddressByPublicKey(pub)
+    console.log(hdPath,"chainCode",chainCode.toString("hex"))
     console.log(hdPath,"chainCode",chainCode.toString("hex"))
 
     let childPath= "m/1/"+hdIndex
