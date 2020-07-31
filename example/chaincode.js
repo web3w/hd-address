@@ -20,7 +20,7 @@ let getPublicKeyByChainCode = () => {
 
     let testPath = "m/44'/0'/1'/1/" + hdIndex
     let test = hd.wallet.getPathChainCode(testPath)
-    let testAaddr = hd.BTC.getAddressByPublicKey(child.pub)
+    let testAaddr = hd.BTC.getAddressByPublicKey(test.pub)
     console.log(testPath, test.pub.toString("hex"),"BTC Address",testAaddr.address)
 }
 
