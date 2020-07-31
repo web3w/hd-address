@@ -26,8 +26,7 @@ root -- BIP44
 ```
  
 ## Initialization
-### Mnemonic Initialization
- [example](./example/mnemonic.js) 
+### Mnemonic Initialization: [example](./example/mnemonic.js) 
 ```javascript
 const hdAddress = require("hd-address")  
 const mnemonic = "star star star star star star"
@@ -36,8 +35,7 @@ const pwd = "star"
 let hd = hdAddress.HD(mnemonic,hdAddress.keyType.mnemonic,pwd) //v3.1
 ```
 
-### Seed Initialization 
- [example](./example/seed.js) 
+### Seed Initialization: [example](./example/seed.js) 
 
 ```javascript
 const seed ="03d0be996b63e90c7625dd3f5319c3bc11669d3d35ae5dc345595e5e59be74084f"
@@ -47,13 +45,12 @@ let seedBuf = Buffer.from(seed, "hex")
 let hd = hdAddress.HD(seedBuf,hdAddress.keyType.seed) //v3.0
 ```
 
-### Base58 Initialization 
- [example](./example/base58.js) 
+### Base58 Initialization: [example](./example/base58.js) 
 
 ```javascript
 const hdAddress = require("hd-address")  
 const myselfBase58 = "xprv9s21ZrQH143K3QTDL4LXw2F7HEK3wJUD2nW2nRk4stbPy6cq3jPPqjiChkVvvNKmPGJxWUtg6LnF5kejMRNNU3TGtRBeJgk33yuGBxrMPHi"
-let hd = hdAddress.HD(myselfBase58,hdAddress.keyType.base58) //v3.1.0
+let hd = hdAddress.HD(myselfBase58,hdAddress.keyType.base58) //v3.1
 ```
 
 ## Basic Usage
@@ -93,7 +90,7 @@ let hd = hdAddress.HD(myselfBase58,hdAddress.keyType.base58) //v3.1.0
 
 ## Advanced Usage
 ### **Extension:** [example](./example/extension/index.js)
-
+You can extend hd-address by implementing AddressClass
 ```javascript
 
 const AddressClass =  require("hd-address").AddressClass //v3.0
@@ -117,17 +114,20 @@ module.exports = class EosAddress extends AddressClass {
     }
 }
 ```
-### **Chain Code:** [example](./example/chaincode.js)
+### **Get address using chain code:** [example](./example/chaincode.js)
+Chain Code can do hierarchical authorization management
 ```js
    let hdPath = "m/44'/0'/1'"
    let {pub, chainCode} = hd.wallet.getPathChainCode(hdPath)
    console.log(hdPath, "chainCode", chainCode.toString("hex"),"\n")
 
+   // pubKey + chainCode +childPath =>  address
    let childPath = "m/1/" + hdIndex
    let child = hd.wallet.getPublicKeyByChainCode(pub, chainCode, childPath)
    let childAaddr = hd.BTC.getAddressByPublicKey(child.pub)
    console.log(childPath, child.pub.toString("hex"),"BTC Address",childAaddr.address)
 
+   //path =>  address
    let testPath = "m/44'/0'/1'/1/" + hdIndex
    let test = hd.wallet.getPathChainCode(testPath)
    let testAaddr = hd.BTC.getAddressByPublicKey(test.pub)
