@@ -60,9 +60,9 @@ let hd = hdAddress.HD(myselfBase58,hdAddress.keyType.base58) //v3.1.0
 
 ### **Get Random Mnemonic :** [example](./example/mnemonic.js) 
 ```javascript
-  let mnemo = hd.hdWallet.getRandomMnemonic() 
+  let mnemo = hd.wallet.getRandomMnemonic() 
   console.log(mnemo)
-  let isMnemo = hd.hdWallet.validateMnemonic(mnemo) 
+  let isMnemo = hd.wallet.validateMnemonic(mnemo) 
 ```
 
 ### **Get BTC ETH TRX address :** [example](./example/mnemonic.js) 
@@ -120,15 +120,15 @@ module.exports = class EosAddress extends AddressClass {
 ### **Chain Code:** [example](./example/chaincode.js)
 ```js
     let hdPath = "m/44'/0'/1'"
-    let {pub, chainCode} = hd.hdWallet.getPathChainCode(hdPath)
+    let {pub, chainCode} = hd.wallet.getPathChainCode(hdPath)
     console.log(hdPath, "chainCode", chainCode.toString("hex"))
 
     let childPath = "m/1/" + hdIndex
-    let child = hd.hdWallet.getPublicKeyByChainCode(pub, chainCode, childPath)
+    let child = hd.wallet.getPublicKeyByChainCode(pub, chainCode, childPath)
     console.log(childPath, child.pub.toString("hex"))
 
     let testPath = "m/44'/0'/1'/1/" + hdIndex
-    let test = hd.hdWallet.getPathChainCode(testPath)
+    let test = hd.wallet.getPathChainCode(testPath)
     console.log(testPath, test.pub.toString("hex"))
 ```
 # Testing

@@ -27,18 +27,18 @@ let example =  () => {
 }
 
 let getRandomMnemonic = ()=>{
-    let mnemo = hd.hdWallet.getRandomMnemonic()
+    let mnemo = hd.wallet.getRandomMnemonic()
     console.log(mnemo)
-    let isMnemo = hd.hdWallet.validateMnemonic(mnemo)
+    let isMnemo = hd.wallet.validateMnemonic(mnemo)
     console.log(isMnemo)
 }
 
 let getChineseMnemonic = ()=>{
-    let wordList = hd.hdWallet.wordlists.zh
-    let strength = hd.hdWallet.strength.low
-    let mnemo = hd.hdWallet.getRandomMnemonic(strength, wordList)
+    let wordList = hd.wallet.wordlists.zh
+    let strength = hd.wallet.strength.low
+    let mnemo = hd.wallet.getRandomMnemonic(strength, wordList)
     console.log(mnemo)
-    let isMnemo = hd.hdWallet.validateMnemonic(mnemo, wordList)
+    let isMnemo = hd.wallet.validateMnemonic(mnemo, wordList)
     console.log(isMnemo)
 }
 

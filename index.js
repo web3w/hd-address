@@ -31,7 +31,7 @@ module.exports = {
             throw "key type unsupported"
         }
         return {
-            hdWallet: hd,
+            wallet: hd,
             BTC: new Address.BTC(hd, "BTC"),
             BTC_TEST: new Address.BTC(hd, "BTC", "TEST"),
             BCH: new Address.BTC(hd, "BCH"),
