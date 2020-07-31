@@ -7,7 +7,7 @@ let hdIndex = 6677
 
 // https://github.com/satoshilabs/slips/blob/master/slip-0044.md
 let example =   () => {
-    let hd = hdAddress.hdWallet
+    let hd = hdAddress.wallet
     // step 1: definition coin type
     hd.coinType.EOS = {code: 194}
 
