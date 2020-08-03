@@ -21,7 +21,9 @@
     "bip44",
     "mnemonic",
     "chainCode",
-    "blockchain"
+    "blockchain",
+    "Enterprise",
+    "private key"
   ],
   "author": "txdev",
   "repository": "git@github.com:gisvr/hd-address",

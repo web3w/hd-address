@@ -8,24 +8,31 @@ let hdIndex = hdData.index
 const mnemonic = hdData.mnemonic
 let hd = new walletHD(mnemonic)
 
-let btcGetAddressTest = async (chain, coinSymbol) => {
+let btcGetAddressTest =   (chain, coinSymbol) => {
 
-    let {address} = await chain.getAddress(hdIndex)
+    let {address,path} =   chain.getAddress(hdIndex)
     let validAddress = addrValid(coinSymbol, address)
-    console.assert(validAddress, `address invalid : ${coinSymbol}  ${address}`)
+    console.log(`address valid : ${validAddress} ${coinSymbol}  ${address} ${path}`)
+    console.assert(validAddress, `address invalid : ${coinSymbol}  ${address} ${path}`)
     console.assert(address == hdData[coinSymbol], `address is diff: ${coinSymbol}   ${address}`)
 }
 
 describe("BTC series", () => {
-    it("BTC getAddress", async () => {
+    // m/account'/change/address_index
+    it("BTC getAddressByPath", async () => {
         let coin = new BtcAddr(hd, "BTC")
-        await btcGetAddressTest(coin, "BTC")
+        // btcGetAddressTest(coin, "BTC")
+        let {address, pub, pri, path}  = coin.getAddressByPath("m/1'/0/6677")
+        console.log(`BTC getAddressByPath :  ${address} ${path}`)
+        console.log(address, pub, pri, path)
     })
 
 
-    it("BTC Testnet getAddress", async () => {
+
+
+    it("BTC Testnet getAddress",   () => {
         let coin = new BtcAddr(hd, "BTC", "TEST")
-        await btcGetAddressTest(coin, "BTC_TEST")
+          btcGetAddressTest(coin, "BTC_TEST")
     })
 
 
