@@ -1,6 +1,6 @@
 {
   "name": "hd-address",
-  "version": "3.1.2",
+  "version": "3.1.6",
   "description": "HD wallet address generation utility",
   "main": "index.js",
   "scripts": {
@@ -9,6 +9,10 @@
   "keywords": [
     "HD",
     "wallet",
+    "hdwallet",
+    "hd wallet",
+    "bitcoin",
+    "bitcoin",
     "BTC",
     "ETH",
     "TRX",
