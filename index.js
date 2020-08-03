@@ -41,5 +41,6 @@ module.exports = {
             ETH: new Address.ETH(hd),
             TRX: new Address.TRX(hd),
         }
-    }
+    },
+    mnemonic: MnemonicHD
 }
