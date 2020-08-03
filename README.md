@@ -57,9 +57,9 @@ let hd = hdAddress.HD(myselfBase58,hdAddress.keyType.base58) //v3.1
 
 ### **Get Random Mnemonic :** [example](./example/mnemonic.js) 
 ```javascript
-  let mnemo = hd.wallet.getRandomMnemonic() 
+  let mnemo = hdAddress.getRandomMnemonic() 
   console.log(mnemo)
-  let isMnemo = hd.wallet.validateMnemonic(mnemo) 
+  let isMnemo = hdAddress.validateMnemonic(mnemo) 
 ```
 
 ### **Get BTC ETH TRX address :** [example](./example/mnemonic.js) 
@@ -77,7 +77,7 @@ let hd = hdAddress.HD(myselfBase58,hdAddress.keyType.base58) //v3.1
 
 ### **Get keypair:** [example](./test/index.getkeypair.test.js)
 ```js
- let {address, pri, pub} =  hd.BTC.getAddressKeyPair(hdIndex)
+ let {address, pri, pub} =  hd.BTC.getCoinAddressKeyPair(hdIndex)
 ```
 ### **Get address using private key or public key**
 ```js

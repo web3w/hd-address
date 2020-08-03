@@ -41,13 +41,13 @@ describe("getAddress", () => {
     })
 
 
-    it("ETH getAddressKeyPair ", async () => {
+    it("ETH getCoinAddressKeyPair ", async () => {
         let ok =  getAddressTest("ETH")
 
     })
 
 
-    it("TRX getAddressKeyPair", async () => {
+    it("TRX getCoinAddressKeyPair", async () => {
         let ok = await getAddressTest("TRX")
     })
 

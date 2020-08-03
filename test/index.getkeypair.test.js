@@ -10,9 +10,9 @@ let hdAddress = require("../index").HD(mnemonic)
 let addrValid = require("./benchmark/address.valid")
 
 
-let getAddressKeyPairTest = async (coinSymbol) => {
+let getCoinAddressKeyPairTest = async (coinSymbol) => {
     let chain = hdAddress[coinSymbol]
-    let {address, pri, pub} = await chain.getAddressKeyPair(hdIndex)
+    let {address, pri, pub} = await chain.getCoinAddressKeyPair(hdIndex)
     let validAddress = addrValid(coinSymbol, address)
     console.assert(validAddress, `address invalid : ${coinSymbol}  ${address}`)
     console.assert(address == hdData[coinSymbol], `KeyPai address is diff: ${coinSymbol}   ${address}`)
@@ -24,35 +24,35 @@ let getAddressKeyPairTest = async (coinSymbol) => {
     console.assert(pubAddr.address == hdData[coinSymbol], `ByPublicKey address is diff: ${coinSymbol}   ${address}`)
 }
 
-describe("getAddressKeyPair", () => {
+describe("getCoinAddressKeyPair", () => {
 
-    it("BTC getAddressKeyPair", async () => {
-        let ok = await getAddressKeyPairTest("BTC")
+    it("BTC getCoinAddressKeyPair", async () => {
+        let ok = await getCoinAddressKeyPairTest("BTC")
     })
 
 
-    it("BTC TEST getAddressKeyPair", async () => {
-        let ok = await getAddressKeyPairTest("BTC_TEST")
+    it("BTC TEST getCoinAddressKeyPair", async () => {
+        let ok = await getCoinAddressKeyPairTest("BTC_TEST")
     })
 
-    it("BCH getAddressKeyPair", async () => {
-        let ok = await getAddressKeyPairTest("BCH")
-    })
-
-
-    it("LTC getAddressKeyPair", async () => {
-        let ok = await getAddressKeyPairTest("LTC")
+    it("BCH getCoinAddressKeyPair", async () => {
+        let ok = await getCoinAddressKeyPairTest("BCH")
     })
 
 
-    it("ETH getAddressKeyPair ", async () => {
-        let ok = await getAddressKeyPairTest("ETH")
+    it("LTC getCoinAddressKeyPair", async () => {
+        let ok = await getCoinAddressKeyPairTest("LTC")
+    })
+
+
+    it("ETH getCoinAddressKeyPair ", async () => {
+        let ok = await getCoinAddressKeyPairTest("ETH")
 
     })
 
 
-    it("TRX getAddressKeyPair", async () => {
-        let ok = await getAddressKeyPairTest("TRX")
+    it("TRX getCoinAddressKeyPair", async () => {
+        let ok = await getCoinAddressKeyPairTest("TRX")
     })
 })
 

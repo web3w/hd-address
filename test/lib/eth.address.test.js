@@ -6,7 +6,7 @@ let addrValid = require("../benchmark/address.valid")
 
 let hdData = require("../data").hd
 const mnemonic = hdData.mnemonic
-let hd = new walletHD(mnemonic,"")
+let hd = new walletHD(mnemonic)
 
 describe("ETH", () => {
     it("Eth getAddress",  () => {
