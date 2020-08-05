@@ -3,8 +3,8 @@
 let MnemonicHD = require("./lib/utils/mnemonic.hd")
 let SeedHD = require("./lib/utils/seed.hd")
 let Base58HD = require("./lib/utils/base58.hd")
-let HdWallet = require("./lib/base/hd.wallet.class")
 
+let HdWallet = require("./lib/base/hd.wallet.class")
 let AddressClass = require("./lib/base/address.class")
 
 let Address = {
@@ -20,7 +20,8 @@ module.exports = {
         "base58": "base58",
         "root": "root"
     },
-    AddressClass: AddressClass,
+    AddressClass,
+    HdWallet,
     HD: (key, keyType = "mnemonic", pwd) => {
         let hd
         if (keyType == "mnemonic") {
@@ -30,7 +31,7 @@ module.exports = {
         } else if (keyType == "base58") {
             hd = new Base58HD(key)
         } else if (keyType == "root") {
-            return HdWallet
+            hd = new HdWallet(key)
         } else {
             throw "key type unsupported"
         }
