@@ -3,8 +3,8 @@
 
 An extensible HD Wallet Address management utility
  
-[example](https://github.com/gisvr/hd-address-example) 
-[中文文档](https://github.com/gisvr/hd-address/#readme_cn)
+[example](https://github.com/gisvr/hd-address-example)   
+[中文文档](https://github.com/gisvr/hd-address/blob/master/README_CN.md)
 ### Install
 ```
 npm i hd-address

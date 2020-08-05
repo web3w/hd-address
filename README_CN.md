@@ -3,8 +3,8 @@
 
 一个可扩展的HD钱包地址管理程序
 
-[示例](https://github.com/gisvr/hd-address-example)
-[English Doc](https://github.com/gisvr/hd-address/#readme)
+[示例](https://github.com/gisvr/hd-address-example)  
+[English Doc](https://github.com/gisvr/hd-address/blob/master/README.md)
 ### 安装
 ```
 npm i hd-address
