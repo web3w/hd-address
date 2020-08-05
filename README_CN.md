@@ -1,15 +1,15 @@
 # hd-address
 [![NPM version](https://img.shields.io/npm/v/hd-address?style=flat-square)](https://www.npmjs.com/package/hd-address)
 
-An extensible HD Wallet Address management utility
- 
-[example](https://github.com/gisvr/hd-address-example) 
-[中文文档](https://github.com/gisvr/hd-address/#readme_cn)
-### Install
+一个可扩展的HD钱包地址管理程序
+
+[示例](https://github.com/gisvr/hd-address-example)
+[English Doc](https://github.com/gisvr/hd-address/#readme)
+### 安装
 ```
 npm i hd-address
 ```
-### Reference 
+### 参考规范 
 [HD Wallet (bip32)](https://github.com/bitcoin/bips/blob/master/bip-0032/derivation.png)
 
 [Mnemonic wordlists reference (bip39)](https://github.com/bitcoin/bips/blob/master/bip-0039/bip-0039-wordlists.md) 
@@ -26,56 +26,57 @@ root -- BIP44
                           
 ```
  
-## Initialization
-### Mnemonic Initialization: [example](https://github.com/gisvr/hd-address-example/blob/master/init/mnemonic.pwd.js) 
+## HD Wallet 初始化
+### 使用主记词初始化: [example](https://github.com/gisvr/hd-address-example/blob/master/init/mnemonic.pwd.js) 
 ```javascript
     const hdAddress = require("hd-address")  
     const mnemonic = hdAddress.mnemocie.getRandomMnemonic() 
     const pwd = "star"  
-    let hd = hdAddress.HD(mnemonic,hdAddress.keyType.mnemonic,pwd) //v3.1
+    let hd = hdAddress.HD(mnemonic,hdAddress.keyType.mnemonic,pwd) //支持密码
 ```
 
-### Seed Initialization: [example](https://github.com/gisvr/hd-address-example/blob/master/init/seed.js) 
+### 使用种子初始化: [example](https://github.com/gisvr/hd-address-example/blob/master/init/seed.js) 
 
 ```javascript
     const hdAddress = require("hd-address")
     const {seed} =hdAddress.mnemocie.getRandomSeed() 
-    // Seed should be at least 128 bits and most 512 bits
-    // let seedBuf = Buffer.from(seed, "hex")
+
     let hd = hdAddress.HD(seed,hdAddress.keyType.seed) //v3.0
 ```
 
-### Base58 Initialization: [example](https://github.com/gisvr/hd-address-example/blob/master/init/seed.js) 
+### 使用Base58初始化: [example](https://github.com/gisvr/hd-address-example/blob/master/init/seed.js) 
 
 ```javascript
     const hdAddress = require("hd-address")  
-    const {base58} =hdAddress.mnemocie.getRandomBase58() 
+    const base58 =hdAddress.mnemocie.getRandomSeed() 
     let hd = hdAddress.HD(base58,hdAddress.keyType.base58) //v3.1
 ```
 
-## Basic Usage
+##  基本使用
 
-### **Get Random Mnemonic :** [example](https://github.com/gisvr/hd-address-example/blob/master/mnemonic_safe/mnemonic.js) 
+### **获取随机助记词 :** [example](https://github.com/gisvr/hd-address-example/blob/master/mnemonic_safe/mnemonic.js) 
 ```javascript
-    // default
+    // 默认
     let mnemo = hdAddress.mnemocie.getRandomMnemonic() 
-    // Mnemonic
+    // 中文助记词
     let wordList = hdAddress.mnemonic.wordLists.zh
-    let strength = hdAddress.mnemonic.strength.high 
-    let cnMnemo = hdAddress.mnemonic.getRandomMnemonic(strength, wordList)
+    let strength = hdAddress.mnemonic.strength.high //强度
+    const cnMnemo = hdAddress.mnemonic.getRandomMnemonic(strength, wordList)
     console.log(cnMnemo)
-    // Mnemonic(is safe)
-    let isMnemo = hdAddress.mnemonic.validateMnemonic(cnMnemo) 
+    // 验证助记词(是否随机安全)
+    const isMnemo = hdAddress.mnemonic.validateMnemonic(cnMnemo) 
     console.log(isMnemo)
 ```
-### **Get Random seed or base58 :** [example](https://github.com/gisvr/hd-address-example/blob/master/mnemonic_safe/mnemonic.js) 
+
+### **获取随机种子和Base58密钥 :** [example](https://github.com/gisvr/hd-address-example/blob/master/mnemonic_safe/mnemonic.js) 
 ```javascript
-    let {seed} = hdAddress.seed.getRandomSeed()  
+    let seed = hdAddress.seed.getRandomSeed()  
     console.log(seed)
-    let {base58} = hdAddress.base58.getRandomBase58()  
+    let base58 = hdAddress.base58.getRandomBase58()  
     console.log(base58)
 ```
-### **Get BTC ETH TRX address :** [example](https://github.com/gisvr/hd-address-example/blob/master/init/mnemonic.js) 
+
+### **获取 BTC ETH TRX 地址 :** [example](https://github.com/gisvr/hd-address-example/blob/master/init/mnemonic.js) 
 ```javascript
     let hdIndex=6677
     let btcAddr =  hd.BTC.getAddress(hdIndex)
@@ -92,12 +93,13 @@ root -- BIP44
     console.log(address, pub, pri, path) 
 ```
 
-### **Get keypair:** [example](https://github.com/gisvr/hd-address-example/blob/master/address/address.keypair.js)
+### **获取密钥对和对应的HD路径:** [example](https://github.com/gisvr/hd-address-example/blob/master/address/address.keypair.js)
 ```js
+  let hdIndex=6677
   let {address, path, pri, pub} =  hd.BTC.getCoinAddressKeyPair(hdIndex)
   console.log(address, path)
 ```
-### **Get address using private key or public key**
+### **通过公钥或者私钥获取对应币种的地址**
 ```js
   let priAddr =  hd.BTC.getAddressByPrivateKey(pri)
   console.assert(priAddr.address == address)
@@ -106,11 +108,10 @@ root -- BIP44
   console.assert(pubAddr.address == address)
 ```
 
-## Advanced Usage
-### **EOS extension:** [example](https://github.com/gisvr/hd-address-example/blob/master/extension/eos.address.js)
-You can extend hd-address by implementing AddressClass
+##  进阶使用
+### **EOS 币种扩展:** [example](https://github.com/gisvr/hd-address-example/blob/master/extension/eos.address.js)
+可以通过实现AddressClass的方式来自己扩展hd-address支持的币种
 ```javascript
-
 const AddressClass =  require("hd-address").AddressClass //v3.0
 
 module.exports = class EosAddress extends AddressClass {
@@ -132,8 +133,8 @@ module.exports = class EosAddress extends AddressClass {
     }
 }
 ```
-### **Get address using chain code:** [example](https://github.com/gisvr/hd-address-example/blob/master/chaincode/chaincode.js)
-Chain Code can do hierarchical authorization management
+### **通过chain code 获取地址:** [example](https://github.com/gisvr/hd-address-example/blob/master/chaincode/chaincode.js)
+使用链码可以做分级授权管理，通过chain code对相关地址授权查看或者交易。
 ```js
     let hdPath = "m/44'/0'/1'"
     let {pub, chainCode} = hd.wallet.getChainCodeByPath(hdPath)
@@ -152,7 +153,7 @@ Chain Code can do hierarchical authorization management
     console.log(testPath, test.pub.toString("hex"),"BTC Address",testAaddr.address)
 ```
 
-### **Get address by path:** 
+### **通过path获取对应的地址:** 
 ```js
     let hdpath = "m/0'/1/1" //account/change/index
     let {address, pub, pri, path} = hd.BTC.getAddressByPath(hdpath)
@@ -168,7 +169,7 @@ Chain Code can do hierarchical authorization management
 
 [Apache-2.0 License](./LICENSE)
 
-## Donor Address
+## 捐赠地址
 ```js
 "BTC": "1HthGRdzxunKAiMSazDdL8PZhE4qWpeBNK", 
 "BCH": "12owPGh3cXLk8HevCEx5fZAMPqZPBgvgmX",
