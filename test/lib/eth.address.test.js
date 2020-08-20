@@ -31,8 +31,8 @@ describe("ETH", () => {
 
     it("Eth getAddressByPrivateKey", () => {
         let addr = new EthAddr(hd)
-        let {address, pub, pri, path} = addr.getAddressByPrivateKey("93b1302f88019cfd120f83677274447ae76112be7e31b6aee59928fbb9a12584")
-        console.log(address, pub, pri, path)
+        let {address, pub} = addr.getAddressByPrivateKey("93b1302f88019cfd120f83677274447ae76112be7e31b6aee59928fbb9a12584")
+        console.log(address, pub.toString("hex"))
         let validAddress = addrValid(addr.coin, address)
         console.assert(validAddress, "address invalid")
         console.assert(address == hdData.ETH, "address is diff")

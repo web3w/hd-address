@@ -19,11 +19,11 @@ describe("Trx", () => {
     // m/account'/change/address_index
     it(" getAddressByPath", () => {
         let addr = new TrxAddr(hd)
-        let {address, pub, pri, path} = addr.getAddressByPath("m/20'/0/" + hdData.index)
+        let {address, pub, pri, path} = addr.getAddressByPath("m/0'/0/" + hdData.index)
         console.log(address, pub, pri, path)
         let validAddress = addrValid(addr.coin, address)
         console.assert(validAddress, "address invalid")
-        console.assert(address == hdData.ETH, "address is diff")
+        console.assert(address == hdData.TRX, "address is diff")
 
     })
 })
