@@ -1,6 +1,6 @@
 {
   "name": "hd-address",
-  "version": "3.2.2",
+  "version": "3.2.7",
   "description": "HD wallet address generation utility",
   "main": "index.js",
   "scripts": {
@@ -22,6 +22,7 @@
     "bip44",
     "mnemonic",
     "chainCode",
+    "chain",
     "blockchain",
     "Enterprise",
     "private key"
@@ -38,8 +39,7 @@
     "coinkey": "^3.0.0",
     "coinstring": "^2.3.0",
     "eckey": "^1.0.0",
-    "ethereumjs-util": "^5.2.0",
-    "safe-buffer": "^5.2.1"
+    "ethereumjs-util": "^5.2.0"
   },
   "devDependencies": {
     "hd-address-verify": "^1.0.2",

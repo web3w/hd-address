@@ -17,3 +17,7 @@ package-lock.json
 .vscode
 test
 example
+LICENSE
+README_CN.md
+.npmignore
+.gitignore
