@@ -52,12 +52,12 @@ let hd = hdAddress.HD(seed,hdAddress.keyType.seed)
 let hd = hdAddress.HD(base58,hdAddress.keyType.base58) 
 
 // 获得 HD钱包的对应的币种地址信息
-hd.BTC.getCoinKeyPair(index, account, change)
-hd.ETH.getCoinAddressKeyPair(index, account, change)
-hd.TRX.getAddress(index, account, change)
-hd.LTC.getAddressByPath(hdPath)  // m/account'/change/address_index
-hd.BCH.getAddressByPrivateKey(privateKey)
-hd.BTC_TEST.getAddressByPublicKey(privateKey)
+hd.BTC.getCoinKeyPair(index, account, change) //获取私钥信息
+hd.ETH.getCoinAddressKeyPair(index, account, change) //获取私钥信息,地址信息
+hd.TRX.getAddress(index, account, change) // 索引生成地址
+hd.LTC.getAddressByPath(hdPath)  // 路径生成地址
+hd.BCH.getAddressByPrivateKey(privateKey) // 私钥生成地址
+hd.BTC_TEST.getAddressByPublicKey(publicKey) // 公钥生成地址
 ```
 ## Example
 ### 初始化

@@ -61,9 +61,9 @@ let hd = hdAddress.HD(base58,hdAddress.keyType.base58)
 hd.BTC.getCoinKeyPair(index, account, change)
 hd.ETH.getCoinAddressKeyPair(index, account, change)
 hd.TRX.getAddress(index, account, change)
-hd.LTC.getAddressByPath(hdPath)  // m/account'/change/address_index
+hd.LTC.getAddressByPath(hdPath) 
 hd.BCH.getAddressByPrivateKey(privateKey)
-hd.BTC_TEST.getAddressByPublicKey(privateKey)
+hd.BTC_TEST.getAddressByPublicKey(publicKey)
 ```
 ## Example
 ### Initialization
