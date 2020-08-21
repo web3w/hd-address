@@ -1,22 +1,22 @@
 # hd-address
 [![NPM version](https://img.shields.io/npm/v/hd-address?style=flat-square)](https://www.npmjs.com/package/hd-address)
 
-An extensible HD Wallet Address management utility
+> An extensible HD Wallet Address management utility
+>
+ [中文说明](https://github.com/gisvr/hd-address/blob/master/README_CN.md)
  
-[example](https://github.com/gisvr/hd-address-example)   
-[中文文档](https://github.com/gisvr/hd-address/blob/master/README_CN.md)
+ Please contact us if you have any special needs txdev6@gmail.com 
+
 ### Install
 ```
 $ npm i hd-address
 $ yarn add hd-address
 ```
 ### Reference 
-[HD Wallet (bip32)](https://github.com/bitcoin/bips/blob/master/bip-0032/derivation.png)
-
-[Mnemonic wordlists reference (bip39)](https://github.com/bitcoin/bips/blob/master/bip-0039/bip-0039-wordlists.md) 
-
-[HD Wallet coin type list (bip44)]( https://github.com/satoshilabs/slips/blob/master/slip-0044.md)  
-m / purpose' / coin_type' / account' / change / address_index
+* [HD Wallet (bip32)](https://github.com/bitcoin/bips/blob/master/bip-0032/derivation.png)
+* [Mnemonic wordlists reference (bip39)](https://github.com/bitcoin/bips/blob/master/bip-0039/bip-0039-wordlists.md) 
+* [HD Wallet coin type list (bip44)]( https://github.com/satoshilabs/slips/blob/master/slip-0044.md)  
+> m / purpose' / coin_type' / account' / change / address_index
 ```js
                                                         / address 0
                 coinType 0(btc) -- account 0 -- change 0  
@@ -65,79 +65,53 @@ hd.LTC.getAddressByPath(hdPath)  // m/account'/change/address_index
 hd.BCH.getAddressByPrivateKey(privateKey)
 hd.BTC_TEST.getAddressByPublicKey(privateKey)
 ```
- 
-## Initialization
-### Mnemonic Initialization: [example](https://github.com/gisvr/hd-address-example/blob/master/init/mnemonic.pwd.js) 
+## Example
+### Initialization
+1.[Mnemonic Initialization](https://github.com/gisvr/hd-address-example/blob/master/init/mnemonic.pwd.js) 
 ```javascript
-    const hdAddress = require("hd-address")  
-    const mnemonic = hdAddress.mnemocie.getRandomMnemonic() 
-    const pwd = "star"  
-    let hd = hdAddress.HD(mnemonic,hdAddress.keyType.mnemonic,pwd) //v3.1
+    const mnemonic = hdAddress.mnemocie.getRandomMnemonic()    
+    let hd = hdAddress.HD(mnemonic,hdAddress.keyType.mnemonic)  
 ```
 
-### Seed Initialization: [example](https://github.com/gisvr/hd-address-example/blob/master/init/seed.js) 
-
+2.[Seed Initialization](https://github.com/gisvr/hd-address-example/blob/master/init/seed.js) 
 ```javascript
-    const hdAddress = require("hd-address")
     const {seed} =hdAddress.mnemocie.getRandomSeed() 
-    // Seed should be at least 128 bits and most 512 bits
-    // let seedBuf = Buffer.from(seed, "hex")
-    let hd = hdAddress.HD(seed,hdAddress.keyType.seed) //v3.0
+    let hd = hdAddress.HD(seed,hdAddress.keyType.seed)  
 ```
 
-### Base58 Initialization: [example](https://github.com/gisvr/hd-address-example/blob/master/init/seed.js) 
+3.[Base58 Initialization](https://github.com/gisvr/hd-address-example/blob/master/init/seed.js) 
 
 ```javascript
-    const hdAddress = require("hd-address")  
     const {base58} =hdAddress.mnemocie.getRandomBase58() 
     let hd = hdAddress.HD(base58,hdAddress.keyType.base58) //v3.1
 ```
 
-## Basic Usage
+### Get coin address info
 
-### **Get Random Mnemonic :** [example](https://github.com/gisvr/hd-address-example/blob/master/mnemonic_safe/mnemonic.js) 
-```javascript
-    // default
-    let mnemo = hdAddress.mnemocie.getRandomMnemonic() 
-    // Mnemonic
-    let wordList = hdAddress.mnemonic.wordLists.zh
-    let strength = hdAddress.mnemonic.strength.high 
-    let cnMnemo = hdAddress.mnemonic.getRandomMnemonic(strength, wordList)
-    console.log(cnMnemo)
-    // Mnemonic(is safe)
-    let isMnemo = hdAddress.mnemonic.validateMnemonic(cnMnemo) 
-    console.log(isMnemo)
-```
-### **Get Random seed or base58 :** [example](https://github.com/gisvr/hd-address-example/blob/master/mnemonic_safe/mnemonic.js) 
-```javascript
-    let {seed} = hdAddress.seed.getRandomSeed()  
-    console.log(seed)
-    let {base58} = hdAddress.base58.getRandomBase58()  
-    console.log(base58)
-```
-### **Get BTC ETH TRX address :** [example](https://github.com/gisvr/hd-address-example/blob/master/init/mnemonic.js) 
+1.[Get BTC ETH TRX address example](https://github.com/gisvr/hd-address-example/blob/master/init/mnemonic.js) 
 ```javascript
     let hdIndex=6677
     let btcAddr =  hd.BTC.getAddress(hdIndex)
     console.log("BTC",btcAddr.address)
-    
     let ethAddr =  hd.ETH.getAddress(hdIndex)
     console.log("ETH",ethAddr.address)
-    
     let trxAddr =  hd.TRX.getAddress(hdIndex)
     console.log("TRX",trxAddr.address)
- 
+```
+
+2.Get address by path
+```javascript
     let hdpath = "m/0'/1/1" // account/change/index
     let {address, pub, pri, path} = hd.BTC.getAddressByPath(hdpath)
     console.log(address, pub, pri, path) 
 ```
 
-### **Get keypair:** [example](https://github.com/gisvr/hd-address-example/blob/master/address/address.keypair.js)
+3.[Get keypair](https://github.com/gisvr/hd-address-example/blob/master/address/address.keypair.js)
 ```js
   let {address, path, pri, pub} =  hd.BTC.getCoinAddressKeyPair(hdIndex)
   console.log(address, path)
 ```
-### **Get address using private key or public key**
+4.Get address using private key or public key
 ```js
   let priAddr =  hd.BTC.getAddressByPrivateKey(pri)
   console.assert(priAddr.address == address)
@@ -146,7 +120,23 @@ hd.BTC_TEST.getAddressByPublicKey(privateKey)
   console.assert(pubAddr.address == address)
 ```
 
-## Advanced Usage
+### Generate safe secret key
+
+1.[Get Random Mnemonic](https://github.com/gisvr/hd-address-example/blob/master/mnemonic_safe/mnemonic.js) 
+```javascript
+    let wordList = hdAddress.mnemonic.wordLists.CN
+    let strength = hdAddress.mnemonic.strength.high 
+    let cnMnemo = hdAddress.mnemonic.getRandomMnemonic(strength, wordList)
+    let isMnemo = hdAddress.mnemonic.validateMnemonic(cnMnemo) 
+    console.log(isMnemo)
+```
+
+2.Get Random base58
+```javascript
+    let strength = hdAddress.base58.strength.high 
+    let base58 = hdAddress.mnemonic.getRandombase58(strength)
+```
+ 
 ### **EOS extension:** [example](https://github.com/gisvr/hd-address-example/blob/master/extension/eos.address.js)
 You can extend hd-address by implementing AddressClass
 ```javascript
@@ -192,12 +182,6 @@ Chain Code can do hierarchical authorization management
     console.log(testPath, test.pub.toString("hex"),"BTC Address",testAaddr.address)
 ```
 
-### **Get address by path:** 
-```js
-    let hdpath = "m/0'/1/1" //account/change/index
-    let {address, pub, pri, path} = hd.BTC.getAddressByPath(hdpath)
-    console.log(address, pub, pri, path) 
-```
 # Testing
 
 ```js
