@@ -7,7 +7,8 @@ An extensible HD Wallet Address management utility
 [中文文档](https://github.com/gisvr/hd-address/blob/master/README_CN.md)
 ### Install
 ```
-npm i hd-address
+$ npm i hd-address
+$ yarn add hd-address
 ```
 ### Reference 
 [HD Wallet (bip32)](https://github.com/bitcoin/bips/blob/master/bip-0032/derivation.png)
@@ -24,6 +25,45 @@ root -- BIP44
               \
                 coinType 60(eth) -- account 0 -- change 1 -- address 0
                           
+```
+## API
+```shell script
+const hdAddress = require("hd-address")  
+//------------Get hd wallet private key API------------
+// Generate mnemocie seed base58
+const mnemocie = hdAddress.mnemocie.getRandomMnemocie()
+const seed = hdAddress.seed.getRandomSeed()
+const base58 = hdAddress.base58.getRandomBase58()
+
+// Create Hd wallet
+const hdWallet =new hdAddress.mnemocie(mnemocie)
+const hdWallet =new hdAddress.seed(seed)
+const hdWallet =new hdAddress.base58(base58)
+
+// Generate keypair
+hdWallet.getHdPath(coinTypeCode, index, account = 0, change = 0) 
+hdWallet.getKeyPair(coinTypeCode, index, account, change) 
+hdWallet.getCoinKeyPair(coin, index, account, change) 
+
+// ChainCode
+hdWallet.getChainCodeByPath(path)
+hdWallet.getPublicKeyByChainCode(parentPub, chainCode, path)
+hdWallet.getPrivateKeyByChainCode(parentPri, chainCode, path)
+
+//------------Get coin address  API------------
+
+// Create a wallet with Coin Info
+let hd = hdAddress.HD(mnemonic,hdAddress.keyType.mnemonic,pwd)
+let hd = hdAddress.HD(seed,hdAddress.keyType.seed) 
+let hd = hdAddress.HD(base58,hdAddress.keyType.base58) 
+
+// Get coin info
+hd.BTC.getCoinKeyPair(index, account, change)
+hd.ETH.getCoinAddressKeyPair(index, account, change)
+hd.TRX.getAddress(index, account, change)
+hd.LTC.getAddressByPath(hdPath)  // m/account'/change/address_index
+hd.BCH.getAddressByPrivateKey(privateKey)
+hd.BTC_TEST.getAddressByPublicKey(privateKey)
 ```
  
 ## Initialization
@@ -168,11 +208,3 @@ Chain Code can do hierarchical authorization management
 
 [Apache-2.0 License](./LICENSE)
 
-## Donor Address
-```js
-"BTC": "1HthGRdzxunKAiMSazDdL8PZhE4qWpeBNK", 
-"BCH": "12owPGh3cXLk8HevCEx5fZAMPqZPBgvgmX",
-"LTC": "LchXCPCtYTKUvksjf5RvkZhCwvYQrYewaa",
-"ETH": "0x4E04823FDF08E862201a4cfA595dc1Ec72AdF3Ab",
-"TRX": "TZFH9KReZpsWZZ9Q2bVyXGQtmvVL3PV8gE",
-```

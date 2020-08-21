@@ -68,4 +68,11 @@ describe("address init", () => {
         console.log(address)
     })
 
+    it(" getHDWallet by mnemonic", () => {
+        const hdWallet = new hdAddress.mnemonic(mnemonic)
+        let {path, pub} = hdWallet.getCoinKeyPair("BTC", 0, 0, 0)
+        console.log(path)
+        console.log(pub.toString("hex"))
+    })
+
 })
