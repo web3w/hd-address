@@ -27,9 +27,9 @@ root -- BIP44
                           
 ```
 ## API
-```shell script
+#### 1.HD Wallet private key API 
+```javascript
 const hdAddress = require("hd-address")  
-//------------Get hd wallet private key API------------
 // Generate mnemocie seed base58
 const mnemocie = hdAddress.mnemocie.getRandomMnemocie()
 const seed = hdAddress.seed.getRandomSeed()
@@ -50,8 +50,11 @@ hdWallet.getChainCodeByPath(path)
 hdWallet.getPublicKeyByChainCode(parentPub, chainCode, path)
 hdWallet.getPrivateKeyByChainCode(parentPri, chainCode, path)
 
-//------------Get coin address  API------------
+```
 
+#### 2.Get coin address  API
+```javascript
+const hdAddress = require("hd-address")  
 // Create a wallet with Coin Info
 let hd = hdAddress.HD(mnemonic,hdAddress.keyType.mnemonic,pwd)
 let hd = hdAddress.HD(seed,hdAddress.keyType.seed) 
@@ -64,7 +67,8 @@ hd.TRX.getAddress(index, account, change)
 hd.LTC.getAddressByPath(hdPath) 
 hd.BCH.getAddressByPrivateKey(privateKey)
 hd.BTC_TEST.getAddressByPublicKey(publicKey)
-```
+``` 
+
 ## Example
 ### Initialization
 1.[Mnemonic Initialization](https://github.com/gisvr/hd-address-example/blob/master/init/mnemonic.pwd.js) 

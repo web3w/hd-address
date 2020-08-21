@@ -21,9 +21,9 @@ root -- BIP44
                           
 ```
 ## API
-```shell script
+#### 1.创建和获取HD钱包信息的API
+```javascript
 const hdAddress = require("hd-address")  
-//------------创建和获取HD钱包信息的API------------
 // 随机生成 mnemocie seed base58
 const mnemocie = hdAddress.mnemocie.getRandomMnemocie()
 const seed = hdAddress.seed.getRandomSeed()
@@ -43,9 +43,11 @@ hdWallet.getCoinKeyPair(coin, index, account, change)
 hdWallet.getChainCodeByPath(path)
 hdWallet.getPublicKeyByChainCode(parentPub, chainCode, path)
 hdWallet.getPrivateKeyByChainCode(parentPri, chainCode, path)
-
-//------------获取 币种地址的  API------------
-
+ 
+```
+#### 2.获取币种地址的API
+```javascript
+const hdAddress = require("hd-address")  
 // 创建一个带coin 信息的 HD 钱包
 let hd = hdAddress.HD(mnemonic,hdAddress.keyType.mnemonic,pwd)
 let hd = hdAddress.HD(seed,hdAddress.keyType.seed) 
@@ -59,6 +61,7 @@ hd.LTC.getAddressByPath(hdPath)  // 路径生成地址
 hd.BCH.getAddressByPrivateKey(privateKey) // 私钥生成地址
 hd.BTC_TEST.getAddressByPublicKey(publicKey) // 公钥生成地址
 ```
+
 ## Example
 ### 初始化
 1.[Mnemonic Initialization](https://github.com/gisvr/hd-address-example/blob/master/init/mnemonic.pwd.js) 
