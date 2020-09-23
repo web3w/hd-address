@@ -159,7 +159,7 @@ module.exports = class EosAddress extends AddressClass {
     }
 }
 ```
-### 通过chaincode推出被授权的地址** [example](https://github.com/gisvr/hd-address-example/blob/master/chaincode/chaincode.js)
+### 通过chaincode推出被授权的地址 [example](https://github.com/gisvr/hd-address-example/blob/master/chaincode/chaincode.js)
 Chain Code can do hierarchical authorization management
 ```js
     let hdPath = "m/44'/0'/1'"
