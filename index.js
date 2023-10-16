@@ -32,24 +32,22 @@ export default {
             hd = new HdWallet(key)
         } else {
             throw "key type unsupported"
-        } 
+        }
         const wallet = hd
         const BTC = new BtcSeriesAddress(hd, "BTC")
-        const BTC_TEST = new BtcSeriesAddress(hd, "BTC", "TEST")
-        const BCH = new BtcSeriesAddress(hd, "BCH")
-        const BCH_TEST = new BtcSeriesAddress(hd, "BCH", "TEST")
-        const LTC = new BtcSeriesAddress(hd, "LTC")
-        const LTC_TEST = new BtcSeriesAddress(hd, "LTC", "TEST")
+        const BTC_P2WPKH = new BtcSeriesAddress(hd, "BTC_P2WPKH")
+        const BTC_P2SH_P2WPKH = new BtcSeriesAddress(hd, "BTC_P2SH_P2WPKH")
+        const BTC_P2TR = new BtcSeriesAddress(hd, "BTC_P2TR")
+        const BTC_P2PKH = new BtcSeriesAddress(hd, "BTC_P2PKH")
         const ETH = new EthAddress(hd)
-        const TRX = new TrxAddress(hd) 
+        const TRX = new TrxAddress(hd)
         return {
             wallet,
             BTC,
-            BTC_TEST,
-            BCH,
-            BCH_TEST,
-            LTC,
-            LTC_TEST,
+            BTC_P2WPKH,
+            BTC_P2SH_P2WPKH,
+            BTC_P2TR,
+            BTC_P2PKH,
             ETH,
             TRX
         }
@@ -58,3 +56,13 @@ export default {
     seed: SeedHD,
     base58: Base58HD
 }
+
+// if (coin == "BTC_P2WPKH") {
+//     purpose = 84
+// } else if (coin == "BTC_P2SH_P2WPKH") {
+//     purpose = 49
+// } else if (coin == "BTC_P2TR") {
+//     purpose = 86
+// } else if (coin == "BTC_P2PKH") {
+//     purpose = 44
+// }

@@ -2,7 +2,7 @@
 export default {
     "hd": {
         "mnemonic": "star star star star star star",
-        "index": 6677,
+        "index": 1,
         "BTC": "1442MZYQMh17ZoWdLMferxM4U9ppqGQbuK",
         "BTC_TEST": "miZyecdPAiSNLuzF3ve2gsZPL9RXjA51JS",
         "BCH": "12Ut7DckjmdzU4Kx8cZeCfsyqufcrTFkFq",
@@ -15,7 +15,7 @@ export default {
     "hd_pwd": {
         "mnemonic": "star star star star star star star star star star star star",
         "pwd": "123456",
-        "index": 6677,
+        "index": 1,
         "BTC": "1442MZYQMh17ZoWdLMferxM4U9ppqGQbuK",
         "BTC_TEST": "miZyecdPAiSNLuzF3ve2gsZPL9RXjA51JS",
         "BCH": "12Ut7DckjmdzU4Kx8cZeCfsyqufcrTFkFq",
