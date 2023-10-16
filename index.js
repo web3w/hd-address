@@ -1,19 +1,17 @@
 'use strict';
 
-let MnemonicHD = require("./lib/utils/mnemonic.hd")
-let SeedHD = require("./lib/utils/seed.hd")
-let Base58HD = require("./lib/utils/base58.hd")
+import MnemonicHD from "./lib/utils/mnemonic.hd.js";
+import SeedHD from "./lib/utils/seed.hd.js";
+import Base58HD from "./lib/utils/base58.hd.js";
 
-let HdWallet = require("./lib/base/hd.wallet.class")
-let AddressClass = require("./lib/base/address.class")
+import HdWallet from "./lib/base/hd.wallet.class.js";
+import AddressClass from "./lib/base/address.class.js";
+import BtcSeriesAddress from "./lib/btc.series.address.js"
+import EthAddress from "./lib/eth.address.js"
+import TrxAddress from "./lib/trx.address.js"
 
-let Address = {
-    BTC: require("./lib/btc.series.address"),
-    ETH: require("./lib/eth.address"),
-    TRX: require("./lib/trx.address")
-}
 
-module.exports = {
+export default {
     keyType: {
         "mnemonic": "mnemonic",
         "seed": "seed",
@@ -34,17 +32,26 @@ module.exports = {
             hd = new HdWallet(key)
         } else {
             throw "key type unsupported"
-        }
+        } 
+        const wallet = hd
+        const BTC = new BtcSeriesAddress(hd, "BTC")
+        const BTC_TEST = new BtcSeriesAddress(hd, "BTC", "TEST")
+        const BCH = new BtcSeriesAddress(hd, "BCH")
+        const BCH_TEST = new BtcSeriesAddress(hd, "BCH", "TEST")
+        const LTC = new BtcSeriesAddress(hd, "LTC")
+        const LTC_TEST = new BtcSeriesAddress(hd, "LTC", "TEST")
+        const ETH = new EthAddress(hd)
+        const TRX = new TrxAddress(hd) 
         return {
-            wallet: hd,
-            BTC: new Address.BTC(hd, "BTC"),
-            BTC_TEST: new Address.BTC(hd, "BTC", "TEST"),
-            BCH: new Address.BTC(hd, "BCH"),
-            BCH_TEST: new Address.BTC(hd, "BCH", "TEST"),
-            LTC: new Address.BTC(hd, "LTC"),
-            LTC_TEST: new Address.BTC(hd, "LTC", "TEST"),
-            ETH: new Address.ETH(hd),
-            TRX: new Address.TRX(hd),
+            wallet,
+            BTC,
+            BTC_TEST,
+            BCH,
+            BCH_TEST,
+            LTC,
+            LTC_TEST,
+            ETH,
+            TRX
         }
     },
     mnemonic: MnemonicHD,

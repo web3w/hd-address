@@ -1,6 +1,7 @@
-let verify = require("hd-address-verify")
+import verify from "hd-address-verify"
 
-module.exports = (coin, address) => {
+export default (coin, address) => {
+    debugger
     coin = coin && coin.toUpperCase()
     let isAddress = false
     switch (coin) {
@@ -24,9 +25,6 @@ module.exports = (coin, address) => {
             break;
         case "ETH":
             isAddress = verify.ETH(address)
-            break;
-        case "TRX":
-            isAddress = verify.TRX(address)
             break;
     }
     return isAddress
