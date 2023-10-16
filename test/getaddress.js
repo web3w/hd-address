@@ -14,7 +14,7 @@ let addrValid = require("./benchmark/address.valid")
 
 
 let getAddressTest = async (coinSymbol, network) => {
-    debugger
+     
     let chain = hdAddress[coinSymbol]
     let { address } = await chain.getAddress(hdIndex)
     let validAddress = addrValid(coinSymbol, address)
@@ -24,6 +24,8 @@ let getAddressTest = async (coinSymbol, network) => {
 
 (async () => {
     debugger
-    let ok = getAddressTest("BTC")
+    let ok =await getAddressTest("BTC")
+
+    debugger
     
 })()
