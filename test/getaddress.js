@@ -4,12 +4,13 @@
 import addrValid from "./benchmark/address.valid.js"
 
 // data
-import hdData from "./data/index.js"
+import testData from "./data/index.js"
 
 import Address from "../index.js"
 
-const hdIndex = hdData.hd.index
-const mnemonic = hdData.hd.mnemonic
+const hdData = testData.hd
+const hdIndex = hdData.index
+const mnemonic = hdData.mnemonic
 
 
 const hdAddress = Address.HD(mnemonic)
@@ -18,9 +19,20 @@ const hdAddress = Address.HD(mnemonic)
 
 
 let getAddressTest = async (coinSymbol, network) => {
+    debugger
 
     let chain = hdAddress[coinSymbol]
-    let { address } = await chain.getAddress(hdIndex)
+
+
+
+    let { address, pri, pub } =   chain.getAddress(hdIndex)
+
+    let priAddr = chain.getAddressByPrivateKey(pri)
+    console.assert(priAddr.address == hdData[coinSymbol], `ByPrivateKey address is diff: ${coinSymbol}   ${priAddr.address}`)
+
+    // let pubAddr = chain.getAddressByPublicKey(pub)
+    // console.assert(pubAddr.address == hdData[coinSymbol], `ByPublicKey address is diff: ${coinSymbol}   ${address}`)
+
 
     let p2pkh = await chain.getAddress(hdIndex)
     let p2wpkh = await chain.getNativeSegwitAddress(hdIndex)

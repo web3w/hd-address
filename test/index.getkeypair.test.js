@@ -1,13 +1,13 @@
 'use strict';
 
-let hdData = require("./data").hd
+import { hd as hdData } from "./data";
 let hdIndex = hdData.index
 const mnemonic = hdData.mnemonic
 
 let hdAddress = require("../index").HD(mnemonic)
 
 
-let addrValid = require("./benchmark/address.valid")
+import addrValid from "./benchmark/address.valid.js";
 
 
 let getCoinAddressKeyPairTest = (coinSymbol) => {
