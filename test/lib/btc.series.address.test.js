@@ -27,9 +27,6 @@ describe("BTC series", () => {
         console.log(address, pub, pri, path)
     })
 
-
-
-
     it("BTC Testnet getAddress",   () => {
         let coin = new BtcAddr(hd, "BTC", "TEST")
           btcGetAddressTest(coin, "BTC_TEST")

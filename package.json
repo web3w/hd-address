@@ -33,16 +33,16 @@
   "license": "Apache-2.0 License",
   "dependencies": {
     "base-x": "^3.0.8",
-    "bip32": "^2.0.5",
-    "bip39": "^3.0.2",
-    "coininfo": "^5.1.0",
+    "bip32": "^4.0.0",
+    "bip39": "^3.1.0",
+    "coininfo": "^5.2.1",
     "coinkey": "^3.0.0",
     "coinstring": "^2.3.0",
-    "eckey": "^1.0.0",
-    "ethereumjs-util": "^5.2.0"
+    "ethereumjs-util": "^7.1.5",
+    "tiny-secp256k1": "^2.2.3"
   },
   "devDependencies": {
     "hd-address-verify": "^1.0.2",
-    "mocha": "^7.1.2"
+    "mocha": "^10.2.0"
   }
 }
