@@ -1,6 +1,6 @@
 {
   "name": "hd-address",
-  "version": "3.3.0",
+  "version": "3.3.1",
   "description": "HD wallet address generation utility",
   "main": "./index.js",
   "scripts": {
@@ -36,15 +36,11 @@
     "base-x": "^3.0.8",
     "bip32": "^4.0.0",
     "bip39": "^3.1.0",
-    "coininfo": "^5.2.1",
-    "coinkey": "^3.0.0",
-    "coinstring": "^2.3.0",
     "ethereumjs-util": "^7.1.5",
     "tiny-secp256k1": "^2.2.3"
   },
   "type": "module",
-  "devDependencies": {
-    "hd-address-verify": "^1.1.0",
+  "devDependencies": { 
     "mocha": "^10.2.0"
   }
 }

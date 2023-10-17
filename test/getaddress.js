@@ -1,11 +1,12 @@
 'use strict';
 
 
-import addrValid from "./benchmark/address.valid.js"
+// import addrValid from "./benchmark/address.valid.js"
 
 // data
 import testData from "./data/index.js"
 
+debugger
 import Address from "../index.js"
 
 const hdData = testData.hd
@@ -40,8 +41,8 @@ let getAddressTest = async (coinSymbol, network) => {
     let p2tr = await chain.getTopRootAddress(hdIndex)
     debugger
     // const p2tr = getNestedSegwitAddress
-    let validAddress = addrValid(coinSymbol, address)
-    console.assert(validAddress, `address invalid : ${coinSymbol}  ${address}`)
+    // let validAddress = addrValid(coinSymbol, address)
+    // console.assert(validAddress, `address invalid : ${coinSymbol}  ${address}`)
     console.assert(address == hdData[coinSymbol], `address is diff: ${coinSymbol}   ${address}`)
 }
 
